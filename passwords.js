@@ -2,8 +2,8 @@
  
 const PASSWORDS = {
     // 해시화한 값
-    PROJECT: "5d41402abc4b2a76b9719d911017c592",
-    VAULT: "5d41402abc4b2a76b9719d911017c592"
+    PROJECT: "e9c7a1abf1695b1c6092b53d4f8ef7b4",
+    VAULT: "e9c7a1abf1695b1c6092b53d4f8ef7b4"
 };
 
 window.PASSWORDS = PASSWORDS; 
