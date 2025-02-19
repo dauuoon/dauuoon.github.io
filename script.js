@@ -1003,8 +1003,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function md5(string) {
     return CryptoJS.MD5(string).toString();
 }
-
-// 비밀번호 체크 함수 수정
+// 비밀번호 체크 함수 확인
 function checkProjectPassword(input) {
     return md5(input) === PASSWORDS.PROJECT;
 }
