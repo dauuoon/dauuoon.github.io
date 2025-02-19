@@ -999,19 +999,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 프로젝트 비밀번호 확인
-function checkProjectPassword(input) {
-    if (input === PASSWORDS.PROJECT) {
-        return true;
-    }
-    return false;
+// MD5 해시 함수 (외부 라이브러리 사용)
+function md5(string) {
+    return CryptoJS.MD5(string).toString();
 }
 
-// Vault 비밀번호 확인
+// 비밀번호 체크 함수 수정
+function checkProjectPassword(input) {
+    return md5(input) === PASSWORDS.PROJECT;
+}
+
 function checkVaultPassword(input) {
-    if (input === PASSWORDS.VAULT) {
-        return true;
-    }
-    return false;
+    return md5(input) === PASSWORDS.VAULT;
 }
 
