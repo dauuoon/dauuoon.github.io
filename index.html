@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAWOON KIM</title>
+    <!-- OG -->
+    <meta name="description" content="DAWOON KIM, PORTFOLIO">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="DAWOON KIM">
+    <meta property="og:description" content="DESIGNER PORTFOLIO">
+    <meta property="og:imgae" content="">
+    <!-- CSS&FONT -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">       
+</head>
+<body style="background-color: #141414;">
+    <canvas id="matterCanvas"></canvas>
+    <!-- 헤더 -->
+    <div class="header">
+        <h1 id="main-title"><span id="clock2">Loading...</span> <a>DAWOON KIM.</a> ALL RIGHTS RESERVED.</h1>
+        <h2>Design & Development
+        <br>by Dawoon Kim</h2>
+    </div>
+
+    <!-- 메뉴 -->
+    <nav id="gnb">
+        <ul id="nav-1"> 
+            <li class="slide1"></li>         
+            <li class="slide2"></li>
+            <li><a href="index.html" onclick="event.preventDefault(); location.reload();">WORK</a></li> <!-- ✅ 클릭 시 새로고침 -->
+            <li class="menu_li_about"><a href="#/">ABOUT</a></li>
+            <li><a href="study.html">STUDY</a></li>
+            <li><a href="vault.html">VAULT</a></li>
+        </ul>
+    </nav>
+
+    <!-- 메인 -->
+     <div style="height: 8vh;"></div>
+
+     <div class="main_line"></div>
+        <ul class="project"> 
+            <li data-color="#622BF7"> <!-- 프로젝트마다 다른 색상 지정 -->
+                <div class="project_number">05</div>
+                <div class="project_title_blur">IPLEX STUDIO PLATFORM</div>
+                <div class="project_text">
+                    <span class="project_sub">WEB</span>
+                    <span class="project_sub">2023</span>
+                    <span class="project_sub"><img src="img/lock.svg"></span>
+                </div>
+            </li>
+        </ul>
+     <div class="main_line"></div>
+        <ul class="project"> 
+            <li data-color="#E14C4C"> <!-- 프로젝트마다 다른 색상 지정 -->
+                <div class="project_number">04</div>
+                <div class="project_title_blur">99DAS PLATFORM</div>
+                <div class="project_text">
+                    <span class="project_sub">WEB · APP</span>
+                    <span class="project_sub">2020</span>
+                    <span class="project_sub"><img src="img/lock.svg"></span>
+                </div>
+            </li>
+        </ul>
+     <div class="main_line"></div>
+        <ul class="project"> 
+            <li data-color="#BAE14C"> <!-- 프로젝트마다 다른 색상 지정 -->
+                <div class="project_number">03</div>
+                <div class="project_title_blur">RIDP CMF ARCHIVE</div>
+                <div class="project_text">
+                    <span class="project_sub">WEB</span>
+                    <span class="project_sub">2021</span>
+                    <span class="project_sub"><img src="img/lock.svg"></span>
+                </div>
+            </li>
+        </ul>
+    <div class="main_line"></div>
+        <ul class="project"> 
+            <li data-color="#5EB6CA"> <!-- 프로젝트마다 다른 색상 지정 -->
+                <div class="project_number">02</div>
+                <div class="project_title">PALETUNE</div>
+                <div class="project_text">
+                    <span class="project_sub">WEB · APP</span>
+                    <span class="project_sub">2024</span>
+                    <span class="project_sub" ><img src="img/unlock.svg"></span>
+                </div>
+            </li>
+        </ul>
+    <div class="main_line"></div>
+        <ul class="project"> 
+            <li data-color="#DF7B9A"> <!-- 프로젝트마다 다른 색상 지정 -->
+                <div class="project_number">01</div>
+                <div class="project_title">COMELZ BRAND</div>
+                <div class="project_text">
+                    <span class="project_sub">BX</span>
+                    <span class="project_sub">2024</span>
+                    <span class="project_sub"><img src="img/unlock.svg"></span>
+                </div>
+            </li>
+        </ul>
+    <div class="main_line"></div>
+
+    <!-- 비밀번호 입력 팝업 -->
+    <div id="popup-container" class="hidden">
+        <div class="popup">
+            <div class="popup-header">
+                <h2>This project is protected.</h2>
+            </div>
+            <div class="popup-body">
+                <input type="password" id="password-input" placeholder="Enter password">
+                <button id="submit-password">OK</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- 어바웃 -->
+    <div class="about_menu">
+        <div class="about_title1"> <span id="clock3">Loading...</span> <span class="about_title2">DAWOON KIM.</span>
+        <div class="about_menu_icon"><img src="img/cancel.svg" alt=""></div> </div>
+
+        <div class="about_title"><p>EXPERIENCE</p></div>
+            <div class="about_group">
+                <p class="about_date">2019.02 - 2024.08</p>
+                <p class="about_text"><b>SOTONGFIVE,</b> UXUI Lead Designer</p>
+            </div>
+
+            <div class="about_group">
+                <p class="about_date">2017.02 - 2018.02</p>
+                <p class="about_text"><b>BrandAcumen,</b> BX Designer</p>
+            </div>
+        
+            
+        <div class="about_title"><p>EDUCATION</p></div>     
+        <div class="about_group">
+            <p class="about_date">2025.03 -</p>
+            <p class="about_text"><b>EWHA WOMANS Univ.</b> Media Interaction Design</p>
+        </div>   
+
+        <div class="about_group">
+            <p class="about_date">2012.02 - 2017.02</p>
+            <p class="about_text"><b>DAEGU CATHOLIC Univ.</b> Digital Design</p>
+        </div>           
+
+
+        <div class="about_title"><p>CERTIFICATE</p></div>             
+        <div class="about_group">
+            <p class="about_date">2024.12</p>
+            <p class="about_text">Engineer<b> Service · Experience Design</b> </p>
+        </div>  
+
+        <div class="about_group">
+            <p class="about_date">2017.08</p>
+            <p class="about_text">Industrial Engineer<b> Colorist</b> </p>
+        </div>  
+
+        <div id="clock">Loading...</div>
+
+        <div class="about_project">
+            <div class="about_project_detail">
+                <a href="https://docs.google.com/spreadsheets/d/1ol3he0zVXqu3lHGxJZWJXHiw_7RWLEUx-c9uMDtn1jQ/edit?usp=sharing" target="_blank">PROJECT <b>110</b></a>
+            </div>
+        </div>
+        
+
+    <!-- 푸터 -->
+    <div class="footer">
+        <div class="footer-right">
+            <p>dauuoon@gmail.com</p>
+        </div>
+        
+        <div class="footer-left">
+            <li> <a target="_blank" href="https://www.instagram.com/dauuoon?igsh=MTFmcnBqejQ4aWcxdg%3D%3D&utm_source=qr">Instagram</a></li>
+            <li> <a target="_blank" href="https://www.behance.net/dauuoon">Behance</a></li>
+            <li> <a target="_blank" href="">Linkdin</a></li>
+        </div> 
+    </div>
+    
+
+
+    
+
+    <!-- 스크립트 -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="passwords.js"></script>
+    <script src="script.js"></script>
+
+ 
+
+    <!-- 프로젝트 모달 -->
+    <div class="project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1 class="project-title"></h1>
+                        <p class="project-subtitle"></p>
+                        <p class="project-type"></p>
+                    </div>
+                    <div class="header-right">
+                        <p class="project-part"></p>
+                        <p class="project-date"></p>
+                        <p class="project-client"></p>
+                    </div>
+                </div>
+                <button class="modal-close">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- 이미지들은 JavaScript에서 동적으로 추가됩니다 -->
+            </div>
+            <button class="top-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</body>
+<footer>
+
+</footer>
+
+
+</html>
