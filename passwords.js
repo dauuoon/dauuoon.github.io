@@ -1,9 +1,8 @@
 // 비밀번호 설정
- 
 const PASSWORDS = {
-    // 해시화한 값
-    PROJECT: "e9c7a1abf1695b1c6092b53d4f8ef7b4",
-    VAULT: "e9c7a1abf1695b1c6092b53d4f8ef7b4"
+    // 실제 MD5 해시값
+    PROJECT: "d1b368bc90b9bf14458be5bf57fa9fbe",
+    VAULT: "d1b368bc90b9bf14458be5bf57fa9fbe"
 };
 
 window.PASSWORDS = PASSWORDS; 
