@@ -27,16 +27,15 @@
     </div>
 
     <!-- 메뉴 -->
-    <nav>
-        <div class="nav-left">
-            <a href="index.html">DAWOONKIM</a>
-        </div>
-        <div class="nav-right">
-            <li class="menu_li_about"><a href="#">About</a></li>
-            <a href="study.html">Study</a>
-            <a href="project.html">Project</a>
-            <a href="vault.html">Vault</a>
-        </div>
+    <nav id="gnb">
+        <ul id="nav-1"> 
+            <li class="slide1"></li>         
+            <li class="slide2"></li>
+            <li><a href="index.html" onclick="event.preventDefault(); location.reload();">WORK</a></li> <!-- ✅ 클릭 시 새로고침 -->
+            <li class="menu_li_about"><a href="#/">ABOUT</a></li>
+            <li><a href="study.html">STUDY</a></li>
+            <li><a href="vault.html">VAULT</a></li>
+        </ul>
     </nav>
 
     <!-- 메인 -->
