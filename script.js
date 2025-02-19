@@ -1005,14 +1005,27 @@ function md5(string) {
 }
 // 비밀번호 체크 함수 확인
 function checkProjectPassword(input) {
-    // 입력값과 저장된 해시값 비교
     const hashedInput = CryptoJS.MD5(input).toString();
-    console.log('Entered hash:', hashedInput); // 디버깅용
-    console.log('Stored hash:', PASSWORDS.PROJECT); // 디버깅용
+    console.log('Project Password Check:');
+    console.log('Input:', input);
+    console.log('Hashed Input:', hashedInput);
+    console.log('Stored Hash:', PASSWORDS.PROJECT);
     return hashedInput === PASSWORDS.PROJECT;
 }
 
 function checkVaultPassword(input) {
-    return md5(input) === PASSWORDS.VAULT;
+    const hashedInput = CryptoJS.MD5(input).toString();
+    console.log('Vault Password Check:');
+    console.log('Input:', input);
+    console.log('Hashed Input:', hashedInput);
+    console.log('Stored Hash:', PASSWORDS.VAULT);
+    
+    if (hashedInput === PASSWORDS.VAULT) {
+        alert('✅ 비밀번호 확인 완료! 페이지를 엽니다...');
+        window.location.href = 'vault.html';
+    } else {
+        alert('❌ 비밀번호가 일치하지 않습니다. 다시 시도해주세요!');
+    }
+    return hashedInput === PASSWORDS.VAULT;
 }
 
