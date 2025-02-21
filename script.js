@@ -22,21 +22,19 @@ $("#nav-1 li:not(.menu_li_about)").on("mouseleave", function() {
   }
 });
 
-// About 메뉴 클릭 이벤트 - 이벤트 위임 사용
-$(document).on('click', '.menu_li_about', function(e) {
-    e.preventDefault();
-    e.stopPropagation();  // 이벤트 전파 중단
-    
-    $('.about_menu').toggleClass('active');
-    $(this).find('a').toggleClass('active');
-    
-    if ($('.about_menu').hasClass('active')) {
-        var position = $(this).position();
-        var width = $(this).width();
-        $("#nav-1 .slide1").css({ opacity: 1, left: position.left, width: width });
-    } else {
-        $("#nav-1 .slide1").css({ opacity: 0 });
-    }
+// About 메뉴 클릭 이벤트
+$('.menu_li_about').on('click', function(e) {
+  e.preventDefault();
+  $('.about_menu').toggleClass('active');
+  $(this).find('a').toggleClass('active');
+  
+  if ($('.about_menu').hasClass('active')) {
+    var position = $(this).position();
+    var width = $(this).width();
+    $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
+  } else {
+    $("#nav-1 .slide1").css({ opacity: 0 });
+  }
 });
 
 // Dawoon Kim 클릭 이벤트
@@ -692,8 +690,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-
-
 });
 
 function showPasswordPrompt(projectId) {
@@ -1019,30 +1015,3 @@ function checkProjectPassword(input) {
 function checkVaultPassword(input) {
     return md5(input) === PASSWORDS.VAULT;
 }
-
-// 모든 About 링크에 대한 이벤트 처리
-$(document).on('click', 'a:contains("About")', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    console.log('About clicked:', this); // 디버깅용
-    
-    $('.about_menu').toggleClass('active');
-    $(this).toggleClass('active');
-    
-    if ($('.about_menu').hasClass('active')) {
-        var position = $(this).position();
-        var width = $(this).width();
-        console.log('Position:', position, 'Width:', width); // 디버깅용
-        $("#nav-1 .slide1").css({ opacity: 1, left: position.left, width: width });
-    } else {
-        $("#nav-1 .slide1").css({ opacity: 0 });
-    }
-});
-
-// 페이지 로드시 확인
-$(document).ready(function() {
-    console.log('Script loaded'); // 디버깅용
-    console.log('About menu elements:', $('.footer-menu .menu_li_about, .footer-menu .about a').length); // 디버깅용
-});
-
