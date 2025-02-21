@@ -22,19 +22,21 @@ $("#nav-1 li:not(.menu_li_about)").on("mouseleave", function() {
   }
 });
 
-// About 메뉴 클릭 이벤트
-$('.menu_li_about').on('click', function(e) {
-  e.preventDefault();
-  $('.about_menu').toggleClass('active');
-  $(this).find('a').toggleClass('active');
-  
-  if ($('.about_menu').hasClass('active')) {
-    var position = $(this).position();
-    var width = $(this).width();
-    $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
-  } else {
-    $("#nav-1 .slide1").css({ opacity: 0 });
-  }
+// About 메뉴 클릭 이벤트 - 이벤트 위임 사용
+$(document).on('click', '.menu_li_about', function(e) {
+    e.preventDefault();
+    e.stopPropagation();  // 이벤트 전파 중단
+    
+    $('.about_menu').toggleClass('active');
+    $(this).find('a').toggleClass('active');
+    
+    if ($('.about_menu').hasClass('active')) {
+        var position = $(this).position();
+        var width = $(this).width();
+        $("#nav-1 .slide1").css({ opacity: 1, left: position.left, width: width });
+    } else {
+        $("#nav-1 .slide1").css({ opacity: 0 });
+    }
 });
 
 // Dawoon Kim 클릭 이벤트
@@ -689,6 +691,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 behavior: 'smooth'
             });
         });
+    }
+
+    // 페이지 로드 완료 후 실행
+    if (window.location.hash) {
+        window.location.hash = '';  // 해시 제거
     }
 });
 
