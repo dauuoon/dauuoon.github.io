@@ -693,10 +693,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 페이지 로드 완료 후 실행
-    if (window.location.hash) {
-        window.location.hash = '';  // 해시 제거
-    }
+
 });
 
 function showPasswordPrompt(projectId) {
@@ -1022,4 +1019,30 @@ function checkProjectPassword(input) {
 function checkVaultPassword(input) {
     return md5(input) === PASSWORDS.VAULT;
 }
+
+// 모든 About 링크에 대한 이벤트 처리
+$(document).on('click', 'a:contains("About")', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    console.log('About clicked:', this); // 디버깅용
+    
+    $('.about_menu').toggleClass('active');
+    $(this).toggleClass('active');
+    
+    if ($('.about_menu').hasClass('active')) {
+        var position = $(this).position();
+        var width = $(this).width();
+        console.log('Position:', position, 'Width:', width); // 디버깅용
+        $("#nav-1 .slide1").css({ opacity: 1, left: position.left, width: width });
+    } else {
+        $("#nav-1 .slide1").css({ opacity: 0 });
+    }
+});
+
+// 페이지 로드시 확인
+$(document).ready(function() {
+    console.log('Script loaded'); // 디버깅용
+    console.log('About menu elements:', $('.footer-menu .menu_li_about, .footer-menu .about a').length); // 디버깅용
+});
 
