@@ -53,25 +53,35 @@
     </style>
 </head>
 <body style="background-color: #141414;">
-   
-    <!-- 헤더 -->
-    <div class="header">
-        <h1 id="main-title"><span id="clock2">Loading...</span> <a>DAWOON KIM.</a> ALL RIGHTS RESERVED.</h1>
-        <h2>Design & Development
-        <br>by Dawoon Kim</h2>
+    <!-- 비밀번호 팝업을 맨 앞으로 이동 -->
+    <div id="vault-popup-container">
+        <div class="vault-password-popup">
+            <h3>This page is protected.</h3>
+            <input type="password" id="vault-password-input" placeholder="Enter password">
+            <button id="vault-submit-password">OK</button>
+        </div>
     </div>
 
-    <!-- 메뉴 -->
-    <nav id="gnb">
-        <ul id="nav-1"> 
-            <li class="slide1"></li>         
-            <li class="slide2"></li>
-            <li><a href="index.html">WORK</a></li>
-            <li class="header a"><a href="#/">ABOUT</a></li>
-            <li><a href="study.html">STUDY</a></li>
-            <li><a href="vault.html">VAULT</a></li>
-        </ul>
-    </nav>
+    <!-- 모든 컨텐츠를 vault-content로 감싸기 -->
+    <div class="vault-content">
+        <!-- 헤더 -->
+        <div class="header">
+            <h1 id="main-title"><span id="clock2">Loading...</span> <a>DAWOON KIM.</a> ALL RIGHTS RESERVED.</h1>
+            <h2>Design & Development
+            <br>by Dawoon Kim</h2>
+        </div>
+
+        <!-- 메뉴 -->
+        <nav id="gnb">
+            <ul id="nav-1"> 
+                <li class="slide1"></li>         
+                <li class="slide2"></li>
+                <li><a href="index.html">WORK</a></li>
+                <li class="header a"><a href="#/">ABOUT</a></li>
+                <li><a href="study.html">STUDY</a></li>
+                <li><a href="vault.html">VAULT</a></li>
+            </ul>
+        </nav>
 
         <!-- 경로 표시 -->
         <div class="horizontal-line1"></div>
@@ -81,204 +91,142 @@
         </div>
         <div class="horizontal-line"></div>
     
-    <!-- 그리드 레이아웃 -->
-    <div class="study-grid">
-        <!-- 네 번째 행 -->
-        <div class="study-row">
-            <div class="study-item" data-full-image="path/full/vault/vault10.png">
-                <img src="path/thumbnail/vault/vault10.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault9.png">
-                <img src="path/thumbnail/vault/vault9.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault8.png">
-                <img src="path/thumbnail/vault/vault8.png" alt="Study item">
-            </div>
+        <!-- 그리드 레이아웃 -->
+        <div class="study-grid">
+            <!-- 네 번째 행 -->
+            <div class="study-row">
+                <div class="study-item" data-full-image="path/full/vault/vault10.png">
+                    <img src="path/thumbnail/vault/vault10.png" alt="Study item">
+                </div>
+                <div class="study-item" data-full-image="path/full/vault/vault9.png">
+                    <img src="path/thumbnail/vault/vault9.png" alt="Study item">
+                </div>
+                <div class="study-item" data-full-image="path/full/vault/vault8.png">
+                    <img src="path/thumbnail/vault/vault8.png" alt="Study item">
+                </div>
 
+            </div>
         </div>
-    </div>
 
 
         <div class="horizontal-line"></div>
 
-    <!-- 그리드 레이아웃 -->
-    <div class="study-grid">
-        <!-- 세 번째 행 -->
-        <div class="study-row">
- 
-            <div class="study-item" data-full-image="path/full/vault/vault7.png">
-                <img src="path/thumbnail/vault/vault7.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault6.png">
-                <img src="path/thumbnail/vault/vault6.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault5.png">
-                <img src="path/thumbnail/vault/vault5.png" alt="Study item">
-            </div>
-        </div>
-    </div>
-
-    <div class="horizontal-line"></div>
-
-    <!-- 그리드 레이아웃 -->
-    <div class="study-grid">
-        <!-- 두 번째 행 -->
-        <div class="study-row">
-
-            <div class="study-item" data-full-image="path/full/vault/vault4.png">
-                <img src="path/thumbnail/vault/vault4.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault3.png">
-                <img src="path/thumbnail/vault/vault3.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault2.png">
-                <img src="path/thumbnail/vault/vault2.png" alt="Study item">
+        <!-- 그리드 레이아웃 -->
+        <div class="study-grid">
+            <!-- 세 번째 행 -->
+            <div class="study-row">
+     
+                <div class="study-item" data-full-image="path/full/vault/vault7.png">
+                    <img src="path/thumbnail/vault/vault7.png" alt="Study item">
+                </div>
+                <div class="study-item" data-full-image="path/full/vault/vault6.png">
+                    <img src="path/thumbnail/vault/vault6.png" alt="Study item">
+                </div>
+                <div class="study-item" data-full-image="path/full/vault/vault5.png">
+                    <img src="path/thumbnail/vault/vault5.png" alt="Study item">
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="horizontal-line"></div>    
+        <div class="horizontal-line"></div>
 
-    <!-- 그리드 레이아웃 -->
-    <div class="study-grid">
-        <!-- 첫 번째 행 -->
-        <div class="study-row">
+        <!-- 그리드 레이아웃 -->
+        <div class="study-grid">
+            <!-- 두 번째 행 -->
+            <div class="study-row">
 
-            <div class="study-item" data-full-image="path/full/vault/vault1.png">
-                <img src="path/thumbnail/vault/vault1.png" alt="Study item">
+                <div class="study-item" data-full-image="path/full/vault/vault4.png">
+                    <img src="path/thumbnail/vault/vault4.png" alt="Study item">
+                </div>
+                <div class="study-item" data-full-image="path/full/vault/vault3.png">
+                    <img src="path/thumbnail/vault/vault3.png" alt="Study item">
+                </div>
+                <div class="study-item" data-full-image="path/full/vault/vault2.png">
+                    <img src="path/thumbnail/vault/vault2.png" alt="Study item">
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- 어바웃 -->
-    <div class="about_menu">
-        <div class="about_title1"> <span id="clock3">Loading...</span> <span class="about_title2">DAWOON KIM.</span>
-        <div class="about_menu_icon"><img src="img/cancel.svg" alt=""></div> </div>
+        <div class="horizontal-line"></div>    
 
-        <div class="about_title"><p>EXPERIENCE</p></div>
-            <div class="about_group">
-                <p class="about_date">2019.02 - 2024.08</p>
-                <p class="about_text"><b>SOTONGFIVE,</b> UXUI Lead Designer</p>
+        <!-- 그리드 레이아웃 -->
+        <div class="study-grid">
+            <!-- 첫 번째 행 -->
+            <div class="study-row">
+
+                <div class="study-item" data-full-image="path/full/vault/vault1.png">
+                    <img src="path/thumbnail/vault/vault1.png" alt="Study item">
+                </div>
             </div>
+        </div>
 
-            <div class="about_group">
-                <p class="about_date">2017.02 - 2018.02</p>
-                <p class="about_text"><b>BrandAcumen,</b> BX Designer</p>
-            </div>
-        
+        <!-- 어바웃 -->
+        <div class="about_menu">
+            <div class="about_title1"> <span id="clock3">Loading...</span> <span class="about_title2">DAWOON KIM.</span>
+            <div class="about_menu_icon"><img src="img/cancel.svg" alt=""></div> </div>
+
+            <div class="about_title"><p>EXPERIENCE</p></div>
+                <div class="about_group">
+                    <p class="about_date">2019.02 - 2024.08</p>
+                    <p class="about_text"><b>SOTONGFIVE,</b> UXUI Lead Designer</p>
+                </div>
+
+                <div class="about_group">
+                    <p class="about_date">2017.02 - 2018.02</p>
+                    <p class="about_text"><b>BrandAcumen,</b> BX Designer</p>
+                </div>
             
-        <div class="about_title"><p>EDUCATION</p></div>     
-        <div class="about_group">
-            <p class="about_date">2025.03 -</p>
-            <p class="about_text"><b>EWHA WOMANS Univ.</b> Media Interaction Design</p>
-        </div>   
+            
+            <div class="about_title"><p>EDUCATION</p></div>     
+            <div class="about_group">
+                <p class="about_date">2025.03 -</p>
+                <p class="about_text"><b>EWHA WOMANS Univ.</b> Media Interaction Design</p>
+            </div>   
 
-        <div class="about_group">
-            <p class="about_date">2012.02 - 2017.02</p>
-            <p class="about_text"><b>DAEGU CATHOLIC Univ.</b> Digital Design</p>
-        </div>           
+            <div class="about_group">
+                <p class="about_date">2012.02 - 2017.02</p>
+                <p class="about_text"><b>DAEGU CATHOLIC Univ.</b> Digital Design</p>
+            </div>           
 
 
-        <div class="about_title"><p>CERTIFICATE</p></div>             
-        <div class="about_group">
-            <p class="about_date">2024.12</p>
-            <p class="about_text">Engineer<b> Service · Experience Design</b> </p>
-        </div>  
+            <div class="about_title"><p>CERTIFICATE</p></div>             
+            <div class="about_group">
+                <p class="about_date">2024.12</p>
+                <p class="about_text">Engineer<b> Service · Experience Design</b> </p>
+            </div>  
 
-        <div class="about_group">
-            <p class="about_date">2017.08</p>
-            <p class="about_text">Industrial Engineer<b> Colorist</b> </p>
-        </div>  
+            <div class="about_group">
+                <p class="about_date">2017.08</p>
+                <p class="about_text">Industrial Engineer<b> Colorist</b> </p>
+            </div>  
 
-        <div id="clock">Loading...</div>
+            <div id="clock">Loading...</div>
 
-        <div class="about_project">
-            <div class="about_project_detail">
-                <a href="https://docs.google.com/spreadsheets/d/1ol3he0zVXqu3lHGxJZWJXHiw_7RWLEUx-c9uMDtn1jQ/edit?usp=sharing" target="_blank">PROJECT <b>110</b></a>
+            <div class="about_project">
+                <div class="about_project_detail">
+                    <a href="https://docs.google.com/spreadsheets/d/1ol3he0zVXqu3lHGxJZWJXHiw_7RWLEUx-c9uMDtn1jQ/edit?usp=sharing" target="_blank">PROJECT <b>110</b></a>
+                </div>
             </div>
-        </div>
-        
+            
 
-    <!-- 푸터 -->
-    <div class="footer">
-        <div class="footer-right">
-            <p>dauuoon@gmail.com</p>
+        <!-- 푸터 -->
+        <div class="footer">
+            <div class="footer-right">
+                <p>dauuoon@gmail.com</p>
+            </div>
+            
+            <div class="footer-left">
+                <li> <a target="_blank" href="https://www.instagram.com/dauuoon?igsh=MTFmcnBqejQ4aWcxdg%3D%3D&utm_source=qr">Instagram</a></li>
+                <li> <a target="_blank" href="https://www.behance.net/dauuoon">Behance</a></li>
+                <li> <a target="_blank" href="">Linkdin</a></li>
+            </div> 
         </div>
-        
-        <div class="footer-left">
-            <li> <a target="_blank" href="https://www.instagram.com/dauuoon?igsh=MTFmcnBqejQ4aWcxdg%3D%3D&utm_source=qr">Instagram</a></li>
-            <li> <a target="_blank" href="https://www.behance.net/dauuoon">Behance</a></li>
-            <li> <a target="_blank" href="">Linkdin</a></li>
-        </div> 
     </div>
-    
 
-
-    
-
-    <!-- 스크립트 -->
+    <!-- 스크립트 순서 변경 -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="passwords.js"></script>
     <script src="script.js"></script>
-  
-
-
-
-    <!-- 프로젝트 모달 -->
-    <div class="project-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="header-content">
-                    <div class="header-left">
-                        <h1 class="project-title"></h1>
-                        <p class="project-subtitle"></p>
-                        <p class="project-type"></p>
-                    </div>
-                    <div class="header-right">
-                        <p class="project-part"></p>
-                        <p class="project-date"></p>
-                        <p class="project-client"></p>
-                    </div>
-                </div>
-                <button class="modal-close">
-                    <svg width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- 이미지들은 JavaScript에서 동적으로 추가됩니다 -->
-            </div>
-            <button class="top-button">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-        </div>
-    </div>
-
-    <!-- 비밀번호 팝업 -->
-    <div id="vault-popup-container">
-        <div class="vault-password-popup">
-            <h3>This page is protected.</h3>
-            <input type="password" id="vault-password-input" placeholder="Enter password">
-            <button id="vault-submit-password">OK</button>
-        </div>
-    </div>
-
-    <!-- 컨텐츠를 vault-content 클래스로 감싸기 -->
-    <div class="vault-content">
-        <!-- 기존 vault 페이지 내용 -->
-        <div class="project-grid">
-            <!-- 프로젝트 내용들 -->
-        </div>
-    </div>
 </body>
-<footer>
-
-</footer>
-
-
 </html>
