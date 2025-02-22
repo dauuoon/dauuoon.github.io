@@ -771,65 +771,69 @@ function hidePasswordPopup() {
     // ... 기존 팝업 숨김 코드 ...
 }
 
-// Vault 페이지 접근 제어 수정
+// Vault 페이지 관련 코드
 document.addEventListener('DOMContentLoaded', function() {
-    // vault.html 페이지인지 확인
-    if (window.location.pathname.includes('vault.html')) {
+    // 현재 페이지가 vault.html인지 확인
+    if (location.pathname.endsWith('vault.html')) {
         console.log('Vault page detected'); // 디버깅용
-        
-        const popupContainer = document.getElementById('vault-popup-container');
+
+        // 필요한 요소들 가져오기
+        const vaultPopup = document.getElementById('vault-popup-container');
         const vaultContent = document.querySelector('.vault-content');
+        const passwordInput = document.getElementById('vault-password-input');
         
-        // 요소 존재 여부 확인
-        console.log('Elements found:', {
-            popup: !!popupContainer,
-            content: !!vaultContent
+        // 요소 존재 확인
+        console.log('Elements found:', { // 디버깅용
+            popup: !!vaultPopup,
+            content: !!vaultContent,
+            input: !!passwordInput
         });
-        
-        // 초기 표시 설정
+
+        // 초기 상태 설정
         if (vaultContent) vaultContent.style.display = 'none';
-        if (popupContainer) {
-            popupContainer.style.display = 'flex';
-            document.body.classList.add('popup-open');
-            
-            // 비밀번호 입력창 포커스
-            const passwordInput = document.getElementById('password-input');
-            if (passwordInput) {
-                setTimeout(() => {
-                    passwordInput.focus();
-                }, 100);
-            }
-        } else {
-            console.error('Vault popup container not found');
+        if (vaultPopup) vaultPopup.style.display = 'flex';
+        
+        // 비밀번호 입력 이벤트
+        if (passwordInput) {
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkVaultPassword(this.value);
+                }
+            });
         }
     }
 });
 
-// MD5 해시 함수 (외부 라이브러리 사용)
-function md5(string) {
-    return CryptoJS.MD5(string).toString();
-}
-// 비밀번호 체크 함수 확인
-function checkProjectPassword(input) {
-    // 입력값과 저장된 해시값 비교
-    const hashedInput = CryptoJS.MD5(input).toString();
-    console.log('Entered hash:', hashedInput); // 디버깅용
-    console.log('Stored hash:', PASSWORDS.PROJECT); // 디버깅용
-    return hashedInput === PASSWORDS.PROJECT;
-}
-
+// 비밀번호 확인 함수
 function checkVaultPassword(input) {
-    console.log('Checking vault password'); // 디버깅용
-    const result = md5(input) === PASSWORDS.VAULT;
-    if (result) {
-        const vaultContent = document.querySelector('.vault-content');
-        const popupContainer = document.getElementById('vault-popup-container');
-        
-        if (vaultContent && popupContainer) {
-            vaultContent.style.display = 'block';
-            popupContainer.style.display = 'none';
-            document.body.classList.remove('popup-open');
+    console.log('Password check initiated'); // 디버깅용
+    
+    try {
+        if (!PASSWORDS || !PASSWORDS.VAULT) {
+            console.error('Password configuration not found');
+            return false;
         }
+
+        const hashedInput = CryptoJS.MD5(input).toString();
+        console.log('Password check:', { // 디버깅용
+            inputLength: input.length,
+            hashLength: hashedInput.length
+        });
+
+        if (hashedInput === PASSWORDS.VAULT) {
+            const popup = document.getElementById('vault-popup-container');
+            const content = document.querySelector('.vault-content');
+            
+            if (popup) popup.style.display = 'none';
+            if (content) content.style.display = 'block';
+            
+            return true;
+        } else {
+            alert('Invalid password');
+            return false;
+        }
+    } catch (error) {
+        console.error('Password check error:', error);
+        return false;
     }
-    return result;
 }
