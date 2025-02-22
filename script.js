@@ -23,18 +23,28 @@ $("#nav-1 li:not(.menu_li_about)").on("mouseleave", function() {
 });
 
 // About 메뉴 클릭 이벤트
-$('.menu_li_about').on('click', function(e) {
-  e.preventDefault();
-  $('.about_menu').toggleClass('active');
-  $(this).find('a').toggleClass('active');
-  
-  if ($('.about_menu').hasClass('active')) {
-    var position = $(this).position();
-    var width = $(this).width();
-    $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
-  } else {
-    $("#nav-1 .slide1").css({ opacity: 0 });
-  }
+$(document).ready(function() {
+    // 모든 About 링크에 대한 이벤트 처리
+    $(document).on('click', '.about a, .menu_li_about a', function(e) {
+        e.preventDefault();
+        
+        // 네비게이션 링크 opacity 조정
+        $('nav a, .nav-right a').css('opacity', '60%');
+        
+        // 슬라이드 바 위치 조정
+        var position = $(this).parent().offset().left;
+        var width = $(this).parent().width();
+        
+        $('.slide1, .slide2').css({
+            'left': position + 'px',
+            'width': width + 'px'
+        });
+        
+        console.log('About clicked:', {
+            position: position,
+            width: width
+        });
+    });
 });
 
 // Dawoon Kim 클릭 이벤트
