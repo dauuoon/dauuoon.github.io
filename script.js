@@ -1019,4 +1019,3 @@ function checkVaultPassword(input) {
     return md5(input) === PASSWORDS.VAULT;
 }
 
-console.log(document.getElementById("vault-popup-container"));
