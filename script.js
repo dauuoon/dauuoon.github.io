@@ -608,74 +608,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // About 메뉴 관련 코드 (jQuery 사용)
     $(document).ready(function() {
-        // About 메뉴 클릭
-        $('.menu_li_about a').click(function(e) {
-            e.preventDefault();
-            console.log('About clicked');
-            $('.about_menu').addClass('active');
-            $(this).addClass('active');
-            
-            // 슬라이드 바 위치 조정
-            var position = $(this).parent().position();
-            var width = $(this).parent().width();
-            $('#nav-1 .slide1').css({
-                opacity: 1,
-                left: position.left,
-                width: width
-            });
-        });
-
-        // Dawoon Kim 클릭
-        $('.header a').click(function(e) {
-            e.preventDefault();
-            console.log('Dawoon Kim clicked');
-            $('.about_menu').addClass('active');
-            $('.menu_li_about a').addClass('active');
-            
-            // 슬라이드 바 위치 조정
-            var position = $('.menu_li_about').position();
-            var width = $('.menu_li_about').width();
-            $('#nav-1 .slide1').css({
-                opacity: 1,
-                left: position.left,
-                width: width
-            });
-        });
-
-        // About 메뉴 닫기
-        $('.about_menu_icon').click(function() {
-            console.log('Close clicked');
-            $('.about_menu').removeClass('active');
-            $('.menu_li_about a').removeClass('active');
-            $('#nav-1 .slide1').css({ opacity: 0 });
-        });
-
-        // ESC 키로 About 메뉴 닫기
-        $(document).keydown(function(e) {
-            if (e.key === 'Escape' && $('.about_menu').hasClass('active')) {
-                $('.about_menu').removeClass('active');
-                $('.menu_li_about a').removeClass('active');
-                $('#nav-1 .slide1').css({ opacity: 0 });
-            }
-        });
-
-        // 메뉴 호버 효과
-        $('#nav-1 a').hover(
-            function() {
+        try {
+            // About 메뉴 클릭
+            $('.menu_li_about a, .about a').on('click', function(e) {
+                e.preventDefault();
+                console.log('About clicked');
+                
+                $('.about_menu').addClass('active');
+                $(this).addClass('active');
+                
+                // 네비게이션 링크 opacity 조정
+                $('nav a, .nav-right a').css('opacity', '60%');
+                
+                // 슬라이드 바 위치 조정
                 var position = $(this).parent().position();
                 var width = $(this).parent().width();
+                
                 $('#nav-1 .slide1').css({
                     opacity: 1,
                     left: position.left,
                     width: width
                 });
-            },
-            function() {
-                if (!$('.about_menu').hasClass('active')) {
+            });
+
+            // Dawoon Kim 클릭
+            $('.header a').click(function(e) {
+                e.preventDefault();
+                console.log('Dawoon Kim clicked');
+                $('.about_menu').addClass('active');
+                $('.menu_li_about a').addClass('active');
+                
+                // 슬라이드 바 위치 조정
+                var position = $('.menu_li_about').position();
+                var width = $('.menu_li_about').width();
+                $('#nav-1 .slide1').css({
+                    opacity: 1,
+                    left: position.left,
+                    width: width
+                });
+            });
+
+            // About 메뉴 닫기
+            $('.about_menu_icon').click(function() {
+                console.log('Close clicked');
+                $('.about_menu').removeClass('active');
+                $('.menu_li_about a').removeClass('active');
+                $('#nav-1 .slide1').css({ opacity: 0 });
+            });
+
+            // ESC 키로 About 메뉴 닫기
+            $(document).keydown(function(e) {
+                if (e.key === 'Escape' && $('.about_menu').hasClass('active')) {
+                    $('.about_menu').removeClass('active');
+                    $('.menu_li_about a').removeClass('active');
                     $('#nav-1 .slide1').css({ opacity: 0 });
                 }
-            }
-        );
+            });
+
+            // 메뉴 호버 효과
+            $('#nav-1 a').hover(
+                function() {
+                    var position = $(this).parent().position();
+                    var width = $(this).parent().width();
+                    $('#nav-1 .slide1').css({
+                        opacity: 1,
+                        left: position.left,
+                        width: width
+                    });
+                },
+                function() {
+                    if (!$('.about_menu').hasClass('active')) {
+                        $('#nav-1 .slide1').css({ opacity: 0 });
+                    }
+                }
+            );
+        } catch (error) {
+            console.log('About menu setup error:', error);
+        }
     });
 
     // 탑 버튼 기능
