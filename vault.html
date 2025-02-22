@@ -35,11 +35,19 @@
     <meta name="theme-color" content="#ffffff">
     
     <!-- 즉시 실행되는 인라인 스크립트를 head에 배치 -->
+    <!-- 인라인 스크립트 수정 -->
     <script>
         // 페이지 파싱 전에 즉시 실행
         (function() {
             if (!sessionStorage.getItem('vaultAuthorized')) {
-                document.documentElement.style.display = 'none';
+                // 전체 페이지를 숨기지 않고, 컨텐츠만 숨김
+                document.addEventListener('DOMContentLoaded', function() {
+                    const vaultContent = document.querySelector('.vault-content');
+                    const popupContainer = document.getElementById('vault-popup-container');
+                    
+                    if (vaultContent) vaultContent.style.display = 'none';
+                    if (popupContainer) popupContainer.style.display = 'flex';
+                });
             }
         })();
     </script>
