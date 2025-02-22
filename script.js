@@ -771,28 +771,36 @@ function hidePasswordPopup() {
     // ... 기존 팝업 숨김 코드 ...
 }
 
-// Vault 페이지 접근 제어
+// Vault 페이지 접근 제어 수정
 document.addEventListener('DOMContentLoaded', function() {
+    // vault.html 페이지인지 확인
     if (window.location.pathname.includes('vault.html')) {
-        const isAuthorized = sessionStorage.getItem('vaultAuthorized');
+        console.log('Vault page detected'); // 디버깅용
+        
         const popupContainer = document.getElementById('vault-popup-container');
         const vaultContent = document.querySelector('.vault-content');
         
-        // 인증 상태 초기화 (강제로 재인증 필요)
-        sessionStorage.removeItem('vaultAuthorized');
+        // 요소 존재 여부 확인
+        console.log('Elements found:', {
+            popup: !!popupContainer,
+            content: !!vaultContent
+        });
         
-        if (!isAuthorized) {
-            // 비인증 상태: 컨텐츠 숨기고 팝업 표시
-            if (vaultContent) vaultContent.style.display = 'none';
-            if (popupContainer) {
-                document.body.classList.add('popup-open');
-                popupContainer.style.display = 'flex';
-            }
+        // 초기 표시 설정
+        if (vaultContent) vaultContent.style.display = 'none';
+        if (popupContainer) {
+            popupContainer.style.display = 'flex';
+            document.body.classList.add('popup-open');
             
-            // 페이지 접근 시도 시 메인으로 리다이렉트
-            if (!popupContainer) {
-                window.location.href = 'index.html';
+            // 비밀번호 입력창 포커스
+            const passwordInput = document.getElementById('password-input');
+            if (passwordInput) {
+                setTimeout(() => {
+                    passwordInput.focus();
+                }, 100);
             }
+        } else {
+            console.error('Vault popup container not found');
         }
     }
 });
@@ -811,9 +819,17 @@ function checkProjectPassword(input) {
 }
 
 function checkVaultPassword(input) {
+    console.log('Checking vault password'); // 디버깅용
     const result = md5(input) === PASSWORDS.VAULT;
     if (result) {
-        sessionStorage.setItem('vaultAuthorized', 'true');
+        const vaultContent = document.querySelector('.vault-content');
+        const popupContainer = document.getElementById('vault-popup-container');
+        
+        if (vaultContent && popupContainer) {
+            vaultContent.style.display = 'block';
+            popupContainer.style.display = 'none';
+            document.body.classList.remove('popup-open');
+        }
     }
     return result;
 }
