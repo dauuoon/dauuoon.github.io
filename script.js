@@ -1015,3 +1015,34 @@ function checkProjectPassword(input) {
 function checkVaultPassword(input) {
     return md5(input) === PASSWORDS.VAULT;
 }
+
+// DOM이 로드된 후 실행
+document.addEventListener('DOMContentLoaded', function() {
+    // 요소들 선택
+    const aboutLink = document.querySelector('.about a');  // about 링크
+    const navLinks = document.querySelectorAll('nav a');  // 모든 네비게이션 링크
+    const slide1 = document.querySelector('#nav-1 .slide1');  // 슬라이드 바 1
+    const slide2 = document.querySelector('#nav-1 .slide2');  // 슬라이드 바 2
+
+    // aboutLink가 존재할 때만 이벤트 리스너 추가
+    if (aboutLink) {
+        aboutLink.addEventListener('click', function() {
+            navLinks.forEach(link => {
+                link.style.opacity = '60%';  // 모든 링크 opacity 초기화
+            });
+            
+            // 슬라이드 바 위치 조정
+            const position = this.parentElement.offsetLeft;
+            const width = this.parentElement.offsetWidth;
+            
+            if (slide1) {
+                slide1.style.left = position + 'px';
+                slide1.style.width = width + 'px';
+            }
+            if (slide2) {
+                slide2.style.left = position + 'px';
+                slide2.style.width = width + 'px';
+            }
+        });
+    }
+});
