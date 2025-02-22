@@ -771,26 +771,28 @@ function hidePasswordPopup() {
     // ... 기존 팝업 숨김 코드 ...
 }
 
+// Vault 페이지 접근 제어
 document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.includes('vault.html')) {
         const isAuthorized = sessionStorage.getItem('vaultAuthorized');
         const popupContainer = document.getElementById('vault-popup-container');
         const vaultContent = document.querySelector('.vault-content');
         
+        // 인증 상태 초기화 (강제로 재인증 필요)
+        sessionStorage.removeItem('vaultAuthorized');
+        
         if (!isAuthorized) {
-            // 비인증 상태
-            vaultContent.style.display = 'none';
-            document.body.classList.add('popup-open');
-            
-            // 페이지 표시 및 팝업 열기
-            requestAnimationFrame(() => {
-                document.documentElement.style.display = '';
+            // 비인증 상태: 컨텐츠 숨기고 팝업 표시
+            if (vaultContent) vaultContent.style.display = 'none';
+            if (popupContainer) {
+                document.body.classList.add('popup-open');
                 popupContainer.style.display = 'flex';
-            });
-        } else {
-            // 인증 상태
-            popupContainer.style.display = 'none';
-            vaultContent.style.display = 'block';
+            }
+            
+            // 페이지 접근 시도 시 메인으로 리다이렉트
+            if (!popupContainer) {
+                window.location.href = 'index.html';
+            }
         }
     }
 });
@@ -809,5 +811,9 @@ function checkProjectPassword(input) {
 }
 
 function checkVaultPassword(input) {
-    return md5(input) === PASSWORDS.VAULT;
+    const result = md5(input) === PASSWORDS.VAULT;
+    if (result) {
+        sessionStorage.setItem('vaultAuthorized', 'true');
+    }
+    return result;
 }
