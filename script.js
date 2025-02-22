@@ -831,6 +831,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 window.location.href = 'index.html';
+                window.location.href = 'vault.html';
             }
         });
 
@@ -838,6 +839,8 @@ document.addEventListener('DOMContentLoaded', function() {
         popup.addEventListener('click', function(e) {
             if (e.target === popup) {
                 window.location.href = 'index.html';
+                window.location.href = 'vault.html';
+
             }
         });
 
