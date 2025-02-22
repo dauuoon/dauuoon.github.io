@@ -745,26 +745,45 @@ function showPasswordPrompt(projectId) {
 // 현재 페이지에 따른 메뉴 활성화
 document.addEventListener('DOMContentLoaded', function() {
     try {
-        // 요소들 선택
-        const aboutLink = document.querySelector('.about a');
-        const navLinks = document.querySelectorAll('nav a');
-        const slide1 = document.querySelector('#nav-1 .slide1');
-        const slide2 = document.querySelector('#nav-1 .slide2');
+        // 요소들 선택 - 더 구체적인 선택자 사용
+        const aboutLink = document.querySelector('.menu_li_about a, .about a');
+        const navLinks = document.querySelectorAll('nav a, .nav-right a');
+        const slide1 = document.querySelector('.slide1');
+        const slide2 = document.querySelector('.slide2');
 
-        // 모든 요소가 존재할 때만 이벤트 리스너 추가
-        if (aboutLink && navLinks.length > 0 && slide1 && slide2) {
-            aboutLink.addEventListener('click', function() {
-                navLinks.forEach(link => {
-                    link.style.opacity = '60%';
-                });
+        // 디버깅을 위한 로그
+        console.log('Elements found:', {
+            aboutLink: !!aboutLink,
+            navLinksCount: navLinks.length,
+            slide1: !!slide1,
+            slide2: !!slide2
+        });
+
+        // About 링크가 있을 때만 이벤트 리스너 추가
+        if (aboutLink) {
+            aboutLink.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                const position = this.parentElement.offsetLeft;
-                const width = this.parentElement.offsetWidth;
+                // 네비게이션 링크가 있을 때만 실행
+                if (navLinks.length > 0) {
+                    navLinks.forEach(link => {
+                        link.style.opacity = '60%';
+                    });
+                }
                 
-                slide1.style.left = position + 'px';
-                slide1.style.width = width + 'px';
-                slide2.style.left = position + 'px';
-                slide2.style.width = width + 'px';
+                // 슬라이드 요소가 있을 때만 실행
+                if (slide1) {
+                    const position = this.parentElement.offsetLeft;
+                    const width = this.parentElement.offsetWidth;
+                    slide1.style.left = position + 'px';
+                    slide1.style.width = width + 'px';
+                }
+                if (slide2) {
+                    const position = this.parentElement.offsetLeft;
+                    const width = this.parentElement.offsetWidth;
+                    slide2.style.left = position + 'px';
+                    slide2.style.width = width + 'px';
+                }
             });
         }
     } catch (error) {
