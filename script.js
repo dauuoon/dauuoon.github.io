@@ -1019,13 +1019,4 @@ function checkVaultPassword(input) {
     return md5(input) === PASSWORDS.VAULT;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const element = document.getElementById("targetElement"); 
-    if (element) {
-        element.addEventListener("click", function() {
-            console.log("클릭됨!");
-        });
-    } else {
-        console.warn("⚠ targetElement가 존재하지 않습니다!");
-    }
-});
+console.log(document.getElementById("vault-popup-container"));
