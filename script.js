@@ -761,55 +761,6 @@ function showPasswordPrompt(projectId) {
     passwordPrompt.querySelector('button').addEventListener('click', checkPassword);
 }
 
-// 현재 페이지에 따른 메뉴 활성화
-document.addEventListener('DOMContentLoaded', function() {
-    try {
-        // 요소들 선택 - 더 구체적인 선택자 사용
-        const aboutLink = document.querySelector('.menu_li_about a, .about a');
-        const navLinks = document.querySelectorAll('nav a, .nav-right a');
-        const slide1 = document.querySelector('.slide1');
-        const slide2 = document.querySelector('.slide2');
-
-        // 디버깅을 위한 로그
-        console.log('Elements found:', {
-            aboutLink: !!aboutLink,
-            navLinksCount: navLinks.length,
-            slide1: !!slide1,
-            slide2: !!slide2
-        });
-
-        // About 링크가 있을 때만 이벤트 리스너 추가
-        if (aboutLink) {
-            aboutLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // 네비게이션 링크가 있을 때만 실행
-                if (navLinks.length > 0) {
-                    navLinks.forEach(link => {
-                        link.style.opacity = '60%';
-                    });
-                }
-                
-                // 슬라이드 요소가 있을 때만 실행
-                if (slide1) {
-                    const position = this.parentElement.offsetLeft;
-                    const width = this.parentElement.offsetWidth;
-                    slide1.style.left = position + 'px';
-                    slide1.style.width = width + 'px';
-                }
-                if (slide2) {
-                    const position = this.parentElement.offsetLeft;
-                    const width = this.parentElement.offsetWidth;
-                    slide2.style.left = position + 'px';
-                    slide2.style.width = width + 'px';
-                }
-            });
-        }
-    } catch (error) {
-        console.log('About menu setup error:', error);
-    }
-});
-
 function showPasswordPopup() {
     document.body.classList.add('popup-open');
     // ... 기존 팝업 표시 코드 ...
