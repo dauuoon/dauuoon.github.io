@@ -23,28 +23,18 @@ $("#nav-1 li:not(.menu_li_about)").on("mouseleave", function() {
 });
 
 // About 메뉴 클릭 이벤트
-$(document).ready(function() {
-    // 모든 About 링크에 대한 이벤트 처리
-    $(document).on('click', '.about a, .menu_li_about a', function(e) {
-        e.preventDefault();
-        
-        // 네비게이션 링크 opacity 조정
-        $('nav a, .nav-right a').css('opacity', '60%');
-        
-        // 슬라이드 바 위치 조정
-        var position = $(this).parent().offset().left;
-        var width = $(this).parent().width();
-        
-        $('.slide1, .slide2').css({
-            'left': position + 'px',
-            'width': width + 'px'
-        });
-        
-        console.log('About clicked:', {
-            position: position,
-            width: width
-        });
-    });
+$('.menu_li_about').on('click', function(e) {
+  e.preventDefault();
+  $('.about_menu').toggleClass('active');
+  $(this).find('a').toggleClass('active');
+  
+  if ($('.about_menu').hasClass('active')) {
+    var position = $(this).position();
+    var width = $(this).width();
+    $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
+  } else {
+    $("#nav-1 .slide1").css({ opacity: 0 });
+  }
 });
 
 // Dawoon Kim 클릭 이벤트
@@ -608,83 +598,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // About 메뉴 관련 코드 (jQuery 사용)
     $(document).ready(function() {
-        try {
-            // About 메뉴 클릭
-            $('.menu_li_about a, .about a').on('click', function(e) {
-                e.preventDefault();
-                console.log('About clicked');
-                
-                $('.about_menu').addClass('active');
-                $(this).addClass('active');
-                
-                // 네비게이션 링크 opacity 조정
-                $('nav a, .nav-right a').css('opacity', '60%');
-                
-                // 슬라이드 바 위치 조정
-                var position = $(this).parent().position();
-                var width = $(this).parent().width();
-                
-                $('#nav-1 .slide1').css({
-                    opacity: 1,
-                    left: position.left,
-                    width: width
-                });
+        // About 메뉴 클릭
+        $('.menu_li_about a').click(function(e) {
+            e.preventDefault();
+            console.log('About clicked');
+            $('.about_menu').addClass('active');
+            $(this).addClass('active');
+            
+            // 슬라이드 바 위치 조정
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $('#nav-1 .slide1').css({
+                opacity: 1,
+                left: position.left,
+                width: width
             });
+        });
 
-            // Dawoon Kim 클릭
-            $('.header a').click(function(e) {
-                e.preventDefault();
-                console.log('Dawoon Kim clicked');
-                $('.about_menu').addClass('active');
-                $('.menu_li_about a').addClass('active');
-                
-                // 슬라이드 바 위치 조정
-                var position = $('.menu_li_about').position();
-                var width = $('.menu_li_about').width();
-                $('#nav-1 .slide1').css({
-                    opacity: 1,
-                    left: position.left,
-                    width: width
-                });
+        // Dawoon Kim 클릭
+        $('.header a').click(function(e) {
+            e.preventDefault();
+            console.log('Dawoon Kim clicked');
+            $('.about_menu').addClass('active');
+            $('.menu_li_about a').addClass('active');
+            
+            // 슬라이드 바 위치 조정
+            var position = $('.menu_li_about').position();
+            var width = $('.menu_li_about').width();
+            $('#nav-1 .slide1').css({
+                opacity: 1,
+                left: position.left,
+                width: width
             });
+        });
 
-            // About 메뉴 닫기
-            $('.about_menu_icon').click(function() {
-                console.log('Close clicked');
+        // About 메뉴 닫기
+        $('.about_menu_icon').click(function() {
+            console.log('Close clicked');
+            $('.about_menu').removeClass('active');
+            $('.menu_li_about a').removeClass('active');
+            $('#nav-1 .slide1').css({ opacity: 0 });
+        });
+
+        // ESC 키로 About 메뉴 닫기
+        $(document).keydown(function(e) {
+            if (e.key === 'Escape' && $('.about_menu').hasClass('active')) {
                 $('.about_menu').removeClass('active');
                 $('.menu_li_about a').removeClass('active');
                 $('#nav-1 .slide1').css({ opacity: 0 });
-            });
+            }
+        });
 
-            // ESC 키로 About 메뉴 닫기
-            $(document).keydown(function(e) {
-                if (e.key === 'Escape' && $('.about_menu').hasClass('active')) {
-                    $('.about_menu').removeClass('active');
-                    $('.menu_li_about a').removeClass('active');
+        // 메뉴 호버 효과
+        $('#nav-1 a').hover(
+            function() {
+                var position = $(this).parent().position();
+                var width = $(this).parent().width();
+                $('#nav-1 .slide1').css({
+                    opacity: 1,
+                    left: position.left,
+                    width: width
+                });
+            },
+            function() {
+                if (!$('.about_menu').hasClass('active')) {
                     $('#nav-1 .slide1').css({ opacity: 0 });
                 }
-            });
-
-            // 메뉴 호버 효과
-            $('#nav-1 a').hover(
-                function() {
-                    var position = $(this).parent().position();
-                    var width = $(this).parent().width();
-                    $('#nav-1 .slide1').css({
-                        opacity: 1,
-                        left: position.left,
-                        width: width
-                    });
-                },
-                function() {
-                    if (!$('.about_menu').hasClass('active')) {
-                        $('#nav-1 .slide1').css({ opacity: 0 });
-                    }
-                }
-            );
-        } catch (error) {
-            console.log('About menu setup error:', error);
-        }
+            }
+        );
     });
 
     // 탑 버튼 기능
@@ -761,79 +742,276 @@ function showPasswordPrompt(projectId) {
     passwordPrompt.querySelector('button').addEventListener('click', checkPassword);
 }
 
+// 현재 페이지에 따른 메뉴 활성화
+document.addEventListener('DOMContentLoaded', function() {
+    // 현재 페이지 URL 가져오기
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    // 네비게이션 메뉴의 모든 링크
+    const navLinks = document.querySelectorAll('#nav-1 li a');
+    
+    // 슬라이드 바 요소들
+    const slide1 = document.querySelector('#nav-1 .slide1');
+    const slide2 = document.querySelector('#nav-1 .slide2');
+    
+    // ABOUT 링크와 닫기 버튼
+    const aboutLink = document.querySelector('.menu_li_about a');
+    const closeButton = document.querySelector('.about_menu_icon');
+    
+    // ABOUT 클릭 시 다른 활성화 상태 초기화
+    aboutLink.addEventListener('click', function() {
+        navLinks.forEach(link => {
+            link.style.opacity = '60%';  // 모든 링크 opacity 초기화
+        });
+        // 슬라이드 바 위치 조정
+        const position = this.parentElement.offsetLeft;
+        const width = this.parentElement.offsetWidth;
+        slide1.style.left = position + 'px';
+        slide1.style.width = width + 'px';
+        slide2.style.left = position + 'px';
+        slide2.style.width = width + 'px';
+    });
+
+    // 닫기 버튼 클릭 시 ABOUT 활성화 상태 초기화
+    closeButton.addEventListener('click', function() {
+        aboutLink.style.opacity = '60%';  // ABOUT 링크 opacity 초기화
+        
+        // 현재 페이지에 따라 원래 활성화된 메뉴 상태로 복원
+        navLinks.forEach(link => {
+            if ((currentPage === '' || currentPage === 'index.html') && link.textContent === 'WORK') {
+                activateMenu(link);
+            }
+            else if (currentPage === 'study.html' && link.textContent === 'STUDY') {
+                activateMenu(link);
+            }
+            else if (currentPage === 'vault.html' && link.textContent === 'VAULT') {  // VAULT 추가
+                activateMenu(link);
+            }
+        });
+    });
+
+    // 메뉴 활성화 함수
+    function activateMenu(link) {
+        link.style.opacity = '1';
+        const position = link.parentElement.offsetLeft;
+        const width = link.parentElement.offsetWidth;
+        slide1.style.opacity = '1';
+        slide1.style.left = position + 'px';
+        slide1.style.width = width + 'px';
+        slide2.style.opacity = '1';
+        slide2.style.left = position + 'px';
+        slide2.style.width = width + 'px';
+    }
+
+    // 페이지 로드 시 초기 메뉴 활성화
+    navLinks.forEach(link => {
+        if ((currentPage === '' || currentPage === 'index.html') && link.textContent === 'WORK') {
+            activateMenu(link);
+        }
+        else if (currentPage === 'study.html' && link.textContent === 'STUDY') {
+            activateMenu(link);
+        }
+        else if (currentPage === 'vault.html' && link.textContent === 'VAULT') {  // VAULT 추가
+            activateMenu(link);
+        }
+    });
+
+    // Vault 페이지 비밀번호 체크
+    if (currentPage === 'vault.html') {
+        const vaultContent = document.getElementById('vault-content');
+        const popup = document.getElementById('vault-popup-container');
+        const passwordInput = document.getElementById('vault-password-input');
+        
+        // 페이지 로드 시 팝업 표시
+        popup.classList.remove('hidden');
+        popup.classList.add('active');
+        passwordInput.focus();
+
+        // ESC 키로 팝업 닫기 (페이지 이동)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+
+        // 팝업 배경 클릭 시 페이지 이동
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                window.location.href = 'index.html';
+            }
+        });
+
+        // 비밀번호 확인
+        function checkVaultPassword() {
+            const password = passwordInput.value;
+            if (checkProjectPassword(password)) { // 프로젝트와 동일한 비밀번호 사용
+                popup.classList.remove('active');
+                popup.classList.add('hidden');
+                vaultContent.style.display = 'block';
+            } else {
+                alert('❌ 비밀번호가 일치하지 않습니다. 다시 시도해주세요!');
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+
+        // 확인 버튼 클릭 이벤트
+        document.getElementById('vault-submit-password').onclick = checkVaultPassword;
+
+        // Enter 키 이벤트
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkVaultPassword();
+            }
+        });
+    }
+
+    // 모든 study-item에 클릭 이벤트 추가
+    const studyItems = document.querySelectorAll('.study-item');
+    
+    studyItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const existingPopup = document.querySelector('.study-popup');
+            if (existingPopup) {
+                existingPopup.remove();
+            }
+            
+            const popup = document.createElement('div');
+            popup.className = 'study-popup';
+            
+            const content = document.createElement('div');
+            content.className = 'study-popup-content';
+            
+            const img = document.createElement('img');
+            img.src = this.dataset.fullImage;
+            content.appendChild(img);
+            
+            const closeBtn = document.createElement('div');
+            closeBtn.className = 'study-popup-close';
+            
+            popup.appendChild(content);
+            popup.appendChild(closeBtn);
+            document.body.appendChild(popup);
+            
+            // 강제 리플로우를 통해 트랜지션이 적용되도록 함
+            popup.offsetHeight;
+            requestAnimationFrame(() => popup.classList.add('active'));
+            
+            const closePopup = () => {
+                popup.classList.remove('active');
+                // 트랜지션이 끝난 후 요소 제거
+                setTimeout(() => {
+                    popup.remove();
+                }, 300);  // 트랜지션 시간과 동일하게 설정
+                
+                document.removeEventListener('keydown', handleEsc);
+                closeBtn.removeEventListener('click', closePopup);
+                popup.removeEventListener('click', handleOutsideClick);
+            };
+            
+            const handleEsc = (e) => {
+                if (e.key === 'Escape') closePopup();
+            };
+            
+            const handleOutsideClick = (e) => {
+                if (e.target === popup) closePopup();
+            };
+            
+            document.addEventListener('keydown', handleEsc);
+            closeBtn.addEventListener('click', closePopup);
+            popup.addEventListener('click', handleOutsideClick);
+        });
+    });
+
+    // vault 페이지 진입 시 즉시 비밀번호 체크
+    if (window.location.pathname.includes('vault.html')) {
+        checkVaultAuthorization();
+    }
+});
+
+function checkVaultAuthorization() {
+    // 이미 인증된 상태인지 확인
+    const isAuthorized = sessionStorage.getItem('vaultAuthorized');
+    if (!isAuthorized) {
+        // 인증되지 않은 경우 팝업 표시
+        document.getElementById('vault-popup-container').classList.remove('hidden');
+    } else {
+        // 인증된 경우 컨텐츠 표시
+        document.querySelector('.vault-content').classList.add('authorized');
+    }
+}
+
+// 비밀번호 확인 후 처리
+function handleVaultAuthorization() {
+    // 비밀번호 확인 로직...
+    if (passwordIsCorrect) {
+        sessionStorage.setItem('vaultAuthorized', 'true');
+        document.getElementById('vault-popup-container').classList.add('hidden');
+        document.querySelector('.vault-content').classList.add('authorized');
+    }
+}
+
+// 모달 열기
+function openModal() {
+    document.body.classList.add('modal-open');
+    // ... 기존 모달 열기 코드 ...
+}
+
+// 모달 닫기
+function closeModal() {
+    document.body.classList.remove('modal-open');
+    // ... 기존 모달 닫기 코드 ...
+}
+
+// 비밀번호 팝업 열 때
 function showPasswordPopup() {
     document.body.classList.add('popup-open');
     // ... 기존 팝업 표시 코드 ...
 }
 
+// 비밀번호 팝업 닫을 때
 function hidePasswordPopup() {
     document.body.classList.remove('popup-open');
     // ... 기존 팝업 숨김 코드 ...
 }
 
-// Vault 페이지 관련 코드
 document.addEventListener('DOMContentLoaded', function() {
-    // 현재 페이지가 vault.html인지 확인
-    if (location.pathname.endsWith('vault.html')) {
-        console.log('Vault page detected'); // 디버깅용
-
-        // 필요한 요소들 가져오기
-        const vaultPopup = document.getElementById('vault-popup-container');
+    if (window.location.pathname.includes('vault.html')) {
+        const isAuthorized = sessionStorage.getItem('vaultAuthorized');
+        const popupContainer = document.getElementById('vault-popup-container');
         const vaultContent = document.querySelector('.vault-content');
-        const passwordInput = document.getElementById('vault-password-input');
         
-        // 요소 존재 확인
-        console.log('Elements found:', { // 디버깅용
-            popup: !!vaultPopup,
-            content: !!vaultContent,
-            input: !!passwordInput
-        });
-
-        // 초기 상태 설정
-        if (vaultContent) vaultContent.style.display = 'none';
-        if (vaultPopup) vaultPopup.style.display = 'flex';
-        
-        // 비밀번호 입력 이벤트
-        if (passwordInput) {
-            passwordInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    checkVaultPassword(this.value);
-                }
+        if (!isAuthorized) {
+            // 비인증 상태
+            vaultContent.style.display = 'none';
+            document.body.classList.add('popup-open');
+            
+            // 페이지 표시 및 팝업 열기
+            requestAnimationFrame(() => {
+                document.documentElement.style.display = '';
+                popupContainer.style.display = 'flex';
             });
+        } else {
+            // 인증 상태
+            popupContainer.style.display = 'none';
+            vaultContent.style.display = 'block';
         }
     }
 });
 
-// 비밀번호 확인 함수
+// MD5 해시 함수 (외부 라이브러리 사용)
+function md5(string) {
+    return CryptoJS.MD5(string).toString();
+}
+// 비밀번호 체크 함수 확인
+function checkProjectPassword(input) {
+    // 입력값과 저장된 해시값 비교
+    const hashedInput = CryptoJS.MD5(input).toString();
+    console.log('Entered hash:', hashedInput); // 디버깅용
+    console.log('Stored hash:', PASSWORDS.PROJECT); // 디버깅용
+    return hashedInput === PASSWORDS.PROJECT;
+}
+
 function checkVaultPassword(input) {
-    console.log('Password check initiated'); // 디버깅용
-    
-    try {
-        if (!PASSWORDS || !PASSWORDS.VAULT) {
-            console.error('Password configuration not found');
-            return false;
-        }
-
-        const hashedInput = CryptoJS.MD5(input).toString();
-        console.log('Password check:', { // 디버깅용
-            inputLength: input.length,
-            hashLength: hashedInput.length
-        });
-
-        if (hashedInput === PASSWORDS.VAULT) {
-            const popup = document.getElementById('vault-popup-container');
-            const content = document.querySelector('.vault-content');
-            
-            if (popup) popup.style.display = 'none';
-            if (content) content.style.display = 'block';
-            
-            return true;
-        } else {
-            alert('Invalid password');
-            return false;
-        }
-    } catch (error) {
-        console.error('Password check error:', error);
-        return false;
-    }
+    return md5(input) === PASSWORDS.VAULT;
 }
