@@ -22,41 +22,44 @@ $("#nav-1 li:not(.menu_li_about)").on("mouseleave", function() {
   }
 });
 
-// About 메뉴 클릭 이벤트
+// About 메뉴 클릭 이벤트 수정
 $('.menu_li_about').on('click', function(e) {
-  e.preventDefault();
-  $('.about_menu').toggleClass('active');
-  $(this).find('a').toggleClass('active');
-  
-  if ($('.about_menu').hasClass('active')) {
-    var position = $(this).position();
-    var width = $(this).width();
-    $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
-  } else {
-    $("#nav-1 .slide1").css({ opacity: 0 });
-  }
+    e.preventDefault();
+    console.log('About menu clicked'); // 디버깅용
+    $('.about_menu').toggleClass('active');
+    $(this).find('a').toggleClass('active');
+    
+    if ($('.about_menu').hasClass('active')) {
+        var position = $(this).position();
+        var width = $(this).width();
+        $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
+    } else {
+        $("#nav-1 .slide1").css({ opacity: 0 });
+    }
 });
 
-// Dawoon Kim 클릭 이벤트
+// Dawoon Kim 클릭 이벤트 수정
 $('.header a').on('click', function(e) {
-  e.preventDefault();
-  $('.about_menu').toggleClass('active');
-  $('.menu_li_about a').toggleClass('active');
-  
-  if ($('.about_menu').hasClass('active')) {
-    var position = $('.menu_li_about').position();
-    var width = $('.menu_li_about').width();
-    $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
-  } else {
-    $("#nav-1 .slide1").css({ opacity: 0 });
-  }
+    e.preventDefault();
+    console.log('Dawoon Kim clicked'); // 디버깅용
+    $('.about_menu').toggleClass('active');
+    $('.menu_li_about a').toggleClass('active');
+    
+    if ($('.about_menu').hasClass('active')) {
+        var position = $('.menu_li_about').position();
+        var width = $('.menu_li_about').width();
+        $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
+    } else {
+        $("#nav-1 .slide1").css({ opacity: 0 });
+    }
 });
 
-// About 닫기 버튼 클릭 이벤트
+// About 닫기 버튼 클릭 이벤트 수정
 $('.about_menu_icon').on('click', function() {
-  $('.about_menu').removeClass('active');
-  $('.menu_li_about a').removeClass('active');
-  $("#nav-1 .slide1").css({ opacity: 0 });
+    console.log('Close button clicked'); // 디버깅용
+    $('.about_menu').removeClass('active');
+    $('.menu_li_about a').removeClass('active');
+    $("#nav-1 .slide1").css({ opacity: 0 });
 });
 
 // ESC 키로 About 패널 닫기
@@ -227,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 프로젝트 데이터 객체
     const projectData = {
-        'IPLEX STUDIO PLATFORM': {
+        "IPLEX STUDIO PLATFORM": {
             title: 'IPLEX STUDIO PLATFORM',
             subtitle: '함께 만들어가는 IP 콘텐츠, 아이플렉스 스튜디오',
             type: '[Company Project]',
@@ -778,13 +781,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 현재 페이지에 따라 원래 활성화된 메뉴 상태로 복원
         navLinks.forEach(link => {
-            if ((currentPage === '' || currentPage === 'index.html') && link.textContent === 'WORK') {
+            if ((currentPage === '' || currentPage === 'index.html') && link.textContent === 'PROJECT') {  // WORK를 PROJECT로 변경
                 activateMenu(link);
             }
-            else if (currentPage === 'study.html' && link.textContent === 'STUDY') {
-                activateMenu(link);
-            }
-            else if (currentPage === 'vault.html' && link.textContent === 'VAULT') {  // VAULT 추가
+            else if (currentPage === 'vault.html' && link.textContent === 'VAULT') {
                 activateMenu(link);
             }
         });
@@ -805,13 +805,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 페이지 로드 시 초기 메뉴 활성화
     navLinks.forEach(link => {
-        if ((currentPage === '' || currentPage === 'index.html') && link.textContent === 'WORK') {
+        if ((currentPage === '' || currentPage === 'index.html') && link.textContent === 'PROJECT') {  // WORK를 PROJECT로 변경
             activateMenu(link);
         }
-        else if (currentPage === 'study.html' && link.textContent === 'STUDY') {
-            activateMenu(link);
-        }
-        else if (currentPage === 'vault.html' && link.textContent === 'VAULT') {  // VAULT 추가
+        else if (currentPage === 'vault.html' && link.textContent === 'VAULT') {
             activateMenu(link);
         }
     });
