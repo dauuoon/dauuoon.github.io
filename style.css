@@ -59,8 +59,8 @@ h2{
 
 /* 네비게이션 메뉴 */
 #nav-1 {
-    bottom: 50px;
     position: fixed;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -71,7 +71,7 @@ h2{
     -webkit-backdrop-filter: blur(10px);
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.10);
-    z-index: 1;  /* z-index를 더 낮게 조정 */
+    z-index: 999998;
 }
 
 #nav-1 li {
@@ -248,7 +248,7 @@ h2{
   height: calc(100% - 35px);
   top: 0px;
   right: -440px;
-  z-index: 1;
+  z-index: 999997;
   position: fixed;
   background: rgba(227, 193, 176);
   float: right;
@@ -346,7 +346,7 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 999994;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.5s, opacity 0.5s ease-in-out;
@@ -530,7 +530,7 @@ h2{
     width: 100%;
     height: 100%;
     background-color: white;
-    z-index: 9999;  /* 가장 높은 z-index 값 설정 */
+    z-index: 999995;
     transform: translateY(100%);
     transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
@@ -739,7 +739,7 @@ body.modal-open #nav-1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 999990;
     transition: opacity 0.3s, transform 0.3s;
     /* 처음에는 숨김 */
     opacity: 0;
@@ -848,7 +848,7 @@ body.modal-open #nav-1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999;  /* 가장 높은 z-index */
+    z-index: 999996;
     opacity: 0;
     visibility: hidden;
     transition: visibility 0.5s, opacity 0.5s ease-in-out;
@@ -1000,10 +1000,10 @@ body.modal-open #nav-1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 999999;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;  /* 팝업 트랜지션 */
+    transition: all 0.3s ease;
 }
 
 .study-popup.active {
@@ -1018,7 +1018,7 @@ body.modal-open #nav-1 {
     position: relative;
     transform: scale(0.95);
     opacity: 0;
-    transition: all 0.3s ease;  /* 팝업 콘텐츠 트랜지션 */
+    transition: all 0.3s ease;
 }
 
 .study-popup.active .study-popup-content {
@@ -1075,7 +1075,7 @@ body.modal-open #nav-1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999;  /* 가장 높은 z-index */
+    z-index: 99999;
 }
 
 /* lock.svg 이미지 위치 조정 */
@@ -1119,106 +1119,8 @@ img[src="img/lock.svg"] {
     opacity: 100%;
 }
 
-/* 태블릿 (패드) 버전 */
-@media screen and (max-width: 1024px) {
-    /* 헤더 영역 */
-    .header {
-        margin: 50px;
-    }
 
-    /* 프로젝트 리스트 */
-    .project_title {
-        width: 400px;  /* 너비 축소 */
-        font-size: 20px;  /* 폰트 크기 축소 */
-    }
 
-    .project_title_blur {
-        width: 400px;  /* 너비 축소 */
-        font-size: 20px;  /* 폰트 크기 축소 */
-    }
-
-    .project_text {
-        right: 30px;  /* 오른쪽 여백 축소 */
-    }
-
-    /* 네비게이션 메뉴 */
-    #nav-1 {
-        bottom: 30px;  /* 하단 여백 축소 */
-    }
-}
-
-/* 중간 모바일 버전 */
-@media screen and (max-width: 800px) {
-    /* 헤더 영역 */
-    .header {
-        margin: 50px;
-    }
-
-    /* 프로젝트 리스트 */
-    .project {
-        height: auto;  /* 높이 자동 조정 */
-        padding: 15px 10px;  /* 패딩 조정 */
-    }
-
-    .project_title {
-        width: 700px;  /* 전체 너비 사용 */
-        font-size: 18px;  /* 폰트 크기 축소 */
-        margin-top: 5px;  /* 상단 여백 추가 */
-    }
-
-    .project_title_blur {
-        width: 700px;  /* 전체 너비 사용 */
-        font-size: 18px;  /* 폰트 크기 축소 */
-    }
-
-    .project_text {
-        position: relative;  /* 위치 변경 */
-        right: auto;  /* 오른쪽 정렬 제거 */
-        margin-top: 10px;  /* 상단 여백 추가 */
-        width: 700px;  /* 전체 너비 사용 */
-    }
-
-    .project_number {
-        font-size: 14px;  /* 폰트 크기 축소 */
-        margin-right: 15px;  /* 오른쪽 여백 축소 */
-        margin-left:25px;
-    }
-
-    .project_sub {
-      margin-left:25px;
-  }
-  
-    /* 네비게이션 메뉴 */
-    #nav-1 {
-        bottom: 50px;  /* 하단 여백 축소 */
-        padding: 5px;  /* 패딩 축소 */
-    }
-
-    #nav-1 li a {
-
-    /* 푸터 */
-    .footer {
-        height: auto;  /* 높이 자동 조정 */
-    }
-
-  }
-
-    .footer-right {
-        margin-left: 50px;  /* 왼쪽 여백 축소 */
-    }
-
-    .footer-left {
-        margin-right: 50px;  /* 오른쪽 여백 축소 */
-    }
-
-    .footer p {
-        font-size: 12px;  /* 폰트 크기 축소 */
-    }
-
-    .footer a {
-        font-size: 12px;  /* 폰트 크기 축소 */
-    }
-}
 
 
 /* vault기준 */
@@ -1262,9 +1164,34 @@ img[src="img/lock.svg"] {
     .study-grid-container {
         /* 1fr 크기의 2개 열로 고정 */
         grid-template-columns: repeat(2, 1fr);
-        gap: 25px; /* 태블릿 간격 */
-        padding: 0 15px; /* 태블릿 여백 */
-        margin-top: 30px;
+        gap: 40px; /* 태블릿 간격 */
+        padding: 0 40px; /* 태블릿 여백 */
+        margin-top: 40px;
+    }
+
+    .horizontal-line1 {
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.05);  
+        margin-top: 30px; 
+      }
+
+      .study-popup.active .study-popup-content {
+        opacity: 1;
+    }
+
+    .study-popup-content {
+        width: auto;
+        height: auto;
+        position: relative;
+        transform: scale(0.95);
+        opacity: 0;
+        transition: all 0.3s ease;  /* 팝업 콘텐츠 트랜지션 */
+    }
+
+    .study-popup-content img {
+        width: 608px;
+        height: 394px;
     }
 }
 
@@ -1321,15 +1248,56 @@ img[src="img/lock.svg"] {
         margin-top: 40px; 
       }
       
-
     .breadcrumb{
         padding: 14px 10px;
     }
 
-    /* 모바일에서 study-item 높이 조정 (선택 사항) */
-    /* .study-item { */
-         /* aspect-ratio: auto; */
-         /* max-height: 200px; */
-    /* } */
+    .study-popup.active .study-popup-content {
+        opacity: 1;
+    }
+
+
+    .study-popup-content {
+        width: auto;
+        height: auto;
+        position: relative;
+        transform: scale(0.95);
+        opacity: 0;
+        transition: all 0.3s ease;  /* 팝업 콘텐츠 트랜지션 */
+    }
+
+    .study-popup-content img {
+        width: 304px;
+        height: 197px;
+    }
+
+    .footer{
+    height: 25px;}
+
+    .footer-right {
+        margin-left: 10px;  /* 왼쪽 여백 축소 */
+    }
+
+    .footer-left {
+        margin-right: 10px;  /* 오른쪽 여백 축소 */
+    }
+
+    .footer p {
+        font-size: 10px;
+        opacity: 0.5;
+        vertical-align: middle;
+        line-height: 0.5;
+    }
+
+    .footer a {
+    font-size: 10px;  /* 폰트 크기 축소 */
+    }
+
+    .footer li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px;
+    line-height: 0;
+}
 }
 
