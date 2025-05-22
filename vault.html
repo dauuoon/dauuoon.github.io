@@ -42,13 +42,44 @@
             }
         })();
     </script>
-    <style>
+    <style> /* 이 <style> 블록 전체를 제거하거나 주석 처리합니다. */
         .vault-content {
             display: none;
         }
         #vault-popup-container {
             display: none;
         }
+        /* .study-grid-container { */ /* 여기부터 */
+        /*     display: flex; */
+        /*     flex-wrap: wrap; */
+        /*     row-gap: 40px; */
+        /*     column-gap: 20px; */
+        /*     padding: 50px; */
+        /* } */
+        /* .study-item { */
+        /*     width: calc(33.33% - 14px); */
+        /*     box-sizing: border-box; */
+        /* } */
+        /* .study-item img { */
+        /*     display: block; */
+        /*     width: 100%; */
+        /*     height: auto; */
+        /* } */
+        /* @media screen and (max-width: 1024px) { */
+        /*     .study-item { */
+        /*         width: calc(50% - 10px); */
+        /*     } */
+        /* } */
+        /* @media screen and (max-width: 768px) { */
+        /*     .study-grid-container { */
+        /*         padding: 10px; */
+        /*         gap: 10px; */
+        /*     } */
+        /*     .study-item { */
+        /*         width: 100%; */
+        /*         max-width: none; */
+        /*     } */
+        /* } */ /* 여기까지 */
     </style>
 </head>
 <body style="background-color: #141414;">
@@ -79,74 +110,49 @@
         </div>
         <div class="horizontal-line"></div>
     
-    <!-- 그리드 레이아웃 -->
-    <div class="study-grid">
-        <!-- 네 번째 행 -->
-        <div class="study-row">
-            <div class="study-item" data-full-image="path/full/vault/vault10.png">
-                <img src="path/thumbnail/vault/vault10.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault9.png">
-                <img src="path/thumbnail/vault/vault9.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault8.png">
-                <img src="path/thumbnail/vault/vault8.png" alt="Study item">
-            </div>
-
+    <!-- study-grid 구조 수정 -->
+    <div class="study-grid-container"> <!-- 이 클래스에 반응형 Grid CSS를 적용할 것입니다. -->
+        <!-- 네 번째 행의 아이템들 -->
+        <div class="study-item" data-full-image="path/full/vault/vault10.png">
+            <img src="path/thumbnail/vault/vault10.png" alt="Study item">
         </div>
-    </div>
-
-
-        <div class="horizontal-line"></div>
-
-    <!-- 그리드 레이아웃 -->
-    <div class="study-grid">
-        <!-- 세 번째 행 -->
-        <div class="study-row">
- 
-            <div class="study-item" data-full-image="path/full/vault/vault7.png">
-                <img src="path/thumbnail/vault/vault7.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault6.png">
-                <img src="path/thumbnail/vault/vault6.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault5.png">
-                <img src="path/thumbnail/vault/vault5.png" alt="Study item">
-            </div>
+        <div class="study-item" data-full-image="path/full/vault/vault9.png">
+            <img src="path/thumbnail/vault/vault9.png" alt="Study item">
         </div>
+        <div class="study-item" data-full-image="path/full/vault/vault8.png">
+            <img src="path/thumbnail/vault/vault8.png" alt="Study item">
+        </div>
+
+        <!-- 세 번째 행의 아이템들 -->
+        <div class="study-item" data-full-image="path/full/vault/vault7.png">
+            <img src="path/thumbnail/vault/vault7.png" alt="Study item">
+        </div>
+        <div class="study-item" data-full-image="path/full/vault/vault6.png">
+            <img src="path/thumbnail/vault/vault6.png" alt="Study item">
+        </div>
+        <div class="study-item" data-full-image="path/full/vault/vault5.png">
+            <img src="path/thumbnail/vault/vault5.png" alt="Study item">
+        </div>
+
+        <!-- 두 번째 행의 아이템들 -->
+        <div class="study-item" data-full-image="path/full/vault/vault4.png">
+            <img src="path/thumbnail/vault/vault4.png" alt="Study item">
+        </div>
+        <div class="study-item" data-full-image="path/full/vault/vault3.png">
+            <img src="path/thumbnail/vault/vault3.png" alt="Study item">
+        </div>
+        <div class="study-item" data-full-image="path/full/vault/vault2.png">
+            <img src="path/thumbnail/vault/vault2.png" alt="Study item">
+        </div>
+
+        <!-- 첫 번째 행의 아이템 -->
+         <div class="study-item" data-full-image="path/full/vault/vault1.png">
+            <img src="path/thumbnail/vault/vault1.png" alt="Study item">
+        </div>
+        <!-- 모든 study-item들을 하나의 study-grid-container 안에 넣습니다. -->
     </div>
 
     <div class="horizontal-line"></div>
-
-    <!-- 그리드 레이아웃 -->
-    <div class="study-grid">
-        <!-- 두 번째 행 -->
-        <div class="study-row">
-
-            <div class="study-item" data-full-image="path/full/vault/vault4.png">
-                <img src="path/thumbnail/vault/vault4.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault3.png">
-                <img src="path/thumbnail/vault/vault3.png" alt="Study item">
-            </div>
-            <div class="study-item" data-full-image="path/full/vault/vault2.png">
-                <img src="path/thumbnail/vault/vault2.png" alt="Study item">
-            </div>
-        </div>
-    </div>
-
-    <div class="horizontal-line"></div>    
-
-    <!-- 그리드 레이아웃 -->
-    <div class="study-grid">
-        <!-- 첫 번째 행 -->
-        <div class="study-row">
-
-            <div class="study-item" data-full-image="path/full/vault/vault1.png">
-                <img src="path/thumbnail/vault/vault1.png" alt="Study item">
-            </div>
-        </div>
-    </div>
 
     <!-- 어바웃 -->
     <div class="about_menu">
