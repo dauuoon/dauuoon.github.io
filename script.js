@@ -768,7 +768,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const slide2 = document.querySelector("#nav-1 .slide2");
 
     // ABOUT 링크와 닫기 버튼
-    const aboutLink = document.querySelector(".menu_li_about a");
+    var aboutLink = document.querySelector(".menu_li_about a");
     const closeButton = document.querySelector(".about_menu_icon");
 
     // !!! 여기에 765번째 줄 오류가 발생했던 코드 !!!
@@ -1006,10 +1006,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const slide2 = document.querySelector("#nav-1 .slide2");
 
   // ABOUT 링크와 닫기 버튼
-  const aboutLink = document.querySelector(".menu_li_about a");
+  var aboutLink = document.querySelector(".menu_li_about a");
   const closeButton = document.querySelector(".about_menu_icon");
 
-  console.log(aboutLink);
   // ABOUT 클릭 시 다른 활성화 상태 초기화
   aboutLink.addEventListener("click", function () {
     navLinks.forEach((link) => {
