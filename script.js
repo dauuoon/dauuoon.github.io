@@ -747,9 +747,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // 스크롤 위치에 따라 탑 버튼을 보여주거나 숨기는 함수
   // 이 함수는 이벤트 리스너 안에서 정의되거나 호출되어야 합니다.
   var xxxx = document.querySelector(".project-modal");
+  const topButton = document.querySelector(".top-button");
+  topButton.addEventListener("click", function () {
+    xxxx.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
   xxxx.addEventListener("scroll", function () {
-    const topButton = document.querySelector(".top-button");
-
     if (xxxx.scrollTop > 200) {
       topButton.classList.add("visible");
     } else {
