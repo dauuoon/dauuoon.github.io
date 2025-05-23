@@ -1214,12 +1214,12 @@ img[src="img/lock.svg"] {
          /* 1fr 크기의 1개 열로 고정 */
         grid-template-columns: repeat(1, 1fr);
         gap: 20px; /* 모바일 간격 */
-        padding: 0 10px; /* 모바일 여백 */
+        padding: 0 20px; /* 모바일 여백 */
         margin-top: 20px;
     }
 
     .header{
-        margin: 30px 10px;
+        margin: 30px 20px;
     }
 
     h1 {
@@ -1262,7 +1262,7 @@ img[src="img/lock.svg"] {
       }
       
     .breadcrumb{
-        padding: 14px 10px;
+        padding: 14px 20px;
     }
 
     .study-popup.active .study-popup-content {
@@ -1288,11 +1288,11 @@ img[src="img/lock.svg"] {
     height: 25px;}
 
     .footer-right {
-        margin-left: 10px;  /* 왼쪽 여백 축소 */
+        margin-left:20px;  /* 왼쪽 여백 축소 */
     }
 
     .footer-left {
-        margin-right: 10px;  /* 오른쪽 여백 축소 */
+        margin-right: 20px;  /* 오른쪽 여백 축소 */
     }
 
     .footer p {
@@ -1313,4 +1313,14 @@ img[src="img/lock.svg"] {
     line-height: 0;
 }
 }
+
+/* Vault 이미지 모달이 열렸을 때 body 스크롤 비활성화 */
+body.modal-open-study {
+    overflow: hidden; /* 스크롤바 숨김 및 스크롤 방지 */
+}
+
+/* 혹시 Index 모달과 같은 클래스를 사용한다면 이 규칙으로 대체 가능 */
+/* body.modal-open {
+    overflow: hidden;
+} */
 

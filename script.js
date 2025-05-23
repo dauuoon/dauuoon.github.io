@@ -1079,6 +1079,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.addEventListener('keydown', handleEsc);
             closeBtn.addEventListener('click', closePopup);
             popup.addEventListener('click', handleOutsideClick);
+
+            // 여기서 body에 클래스 추가
+            document.body.classList.add('modal-open-study'); // 뒷 배경 스크롤 비활성화를 위한 클래스 추가
         });
     });
 
