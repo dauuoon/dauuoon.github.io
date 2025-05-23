@@ -718,7 +718,7 @@ h2 {
 }
 
 /* Firefox 스크롤바 */
-.modal-content {
+.project-modal {
   scrollbar-width: thin;
   scrollbar-color: var(--project-color) transparent;
   z-index: 999998;
