@@ -594,6 +594,12 @@ document.addEventListener("DOMContentLoaded", function () {
         modalBody.innerHTML =
           '<div class="error-message">이미지를 불러오는데 실패했습니다.</div>';
       });
+    const scrollableDivs = document.querySelectorAll(".project-images");
+    scrollableDivs.forEach((div) => {
+      div.addEventListener("scroll", function () {
+        console.log("현재 스크롤 중인 div:", div);
+      });
+    });
   }
 
   // 스크롤 최적화 함수
@@ -737,17 +743,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 스크롤 위치에 따라 탑 버튼을 보여주거나 숨기는 함수
   // 이 함수는 이벤트 리스너 안에서 정의되거나 호출되어야 합니다.
-  function toggleTopButtonVisibility() {
+  var xxxx = document.querySelector(".project-modal");
+  xxxx.addEventListener("scroll", function () {
     const topButton = document.querySelector(".top-button");
-    if (topButton) {
-      // 탑 버튼 요소가 존재하는지 확인
-      if (window.scrollY > 200) {
-        // 200px 이상 스크롤했을 때
-        topButton.classList.add("visible");
-      } else {
-        topButton.classList.remove("visible");
-      }
+ 
+    if (xxxx.scrollTop > 200) {
+      topButton.classList.add("visible");
+    } else {
+      topButton.classList.remove("visible");
     }
+  });
+
+  function toggleTopButtonVisibility() {
+    // const topButton = document.querySelector(".top-button");
+    // if (topButton) {
+    //   // 탑 버튼 요소가 존재하는지 확인
+    //   if (window.scrollY > 200) {
+    //     // 200px 이상 스크롤했을 때
+    //     topButton.classList.add("visible");
+    //   } else {
+    //     topButton.classList.remove("visible");
+    //   }
+    // }
   }
 
   // 페이지의 DOM 트리가 완전히 로드되고 파싱되었을 때 실행
@@ -1008,7 +1025,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ABOUT 링크와 닫기 버튼
   var aboutLink = document.querySelector(".menu_li_about a");
   const closeButton = document.querySelector(".about_menu_icon");
-  console.log(document.querySelector(".menu_li_about a"));
+
   // ABOUT 클릭 시 다른 활성화 상태 초기화
   aboutLink.addEventListener("click", function () {
     navLinks.forEach((link) => {
