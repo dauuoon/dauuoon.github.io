@@ -521,7 +521,8 @@ document.addEventListener("DOMContentLoaded", function () {
       modalBody.appendChild(imageCache.get(projectId));
       modal.style.display = "block";
       requestAnimationFrame(() => {
-        modal.classList.add("active");
+        // modal.classList.add("active");
+        modal.classList.remove("disable");
       });
       document.body.style.overflow = "hidden";
       return;
@@ -538,7 +539,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // 모달 표시
     modal.style.display = "block";
     requestAnimationFrame(() => {
-      modal.classList.add("active");
+      //   modal.classList.add("active");
+      modal.classList.remove("disable");
     });
     document.body.style.overflow = "hidden";
 
@@ -661,7 +663,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // 모달 닫기 시 애니메이션
   document.querySelector(".modal-close").addEventListener("click", function () {
     const modal = document.querySelector(".project-modal");
-    modal.classList.remove("active");
+    // modal.classList.remove("active");
+    modal.classList.add("disable");
     setTimeout(() => {
       modal.style.display = "none";
       document.body.style.overflow = "";
@@ -746,7 +749,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var xxxx = document.querySelector(".project-modal");
   xxxx.addEventListener("scroll", function () {
     const topButton = document.querySelector(".top-button");
- 
+
     if (xxxx.scrollTop > 200) {
       topButton.classList.add("visible");
     } else {
