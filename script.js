@@ -1008,7 +1008,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ABOUT 링크와 닫기 버튼
   var aboutLink = document.querySelector(".menu_li_about a");
   const closeButton = document.querySelector(".about_menu_icon");
-
+  console.log(document.querySelector(".menu_li_about a"));
   // ABOUT 클릭 시 다른 활성화 상태 초기화
   aboutLink.addEventListener("click", function () {
     navLinks.forEach((link) => {
