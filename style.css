@@ -1228,10 +1228,50 @@ img[src="img/lock.svg"] {
   .project_title {
     max-width: 100%;
   }
+  .about_menu {
+    width: 50%;
+    right: -60vw;
+  }
 }
 @media screen and (max-width: 799px) {
   .hide799 {
     display: none;
+  }
+  .project_title {
+    font-size: 20px;
+  }
+  h1,
+  #clock2 {
+    font-size: 22px;
+  }
+  h2 {
+    margin-top: 20px;
+  }
+  .header {
+    margin-bottom: 10px;
+  }
+  .project {
+    padding-left: 0;
+  }
+  .about_menu {
+    width: 100%;
+    right: -110vw;
+  }
+  /* project */
+  .project-part,
+  .project-date,
+  .project-client,
+  .project-subtitle,
+  .project-type,
+  .project-modal,
+  .project-title {
+    color: var(--project-mo-color);
+  }
+  .modal-close svg {
+    fill: var(--project-mo-color);
+  }
+  .modal-header {
+    background: var(--project-mo-bg);
   }
 }
 /* 모바일 레이아웃 (767px 이하): 고정 1열 */

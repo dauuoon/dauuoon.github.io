@@ -305,6 +305,8 @@ document.addEventListener("DOMContentLoaded", function () {
       part: "BX DESIGN (100%) GUI DESIGN (90%)", // 추가
       client: "Client : EmoticBox Inc.",
       color: "#622BF7",
+      mo_color: "#EEEEEE",
+      mo_bg: "#FFFFFF",
       images: [
         "img/projects/iplex/img1.png",
         "img/projects/iplex/img2.png",
@@ -338,6 +340,8 @@ document.addEventListener("DOMContentLoaded", function () {
       part: "UI · GUI DESIGN (100%)",
       client: "Client : Amazing E&M",
       color: "#F5BCBC",
+      mo_color: "#622BF7",
+      mo_bg: "#622BF7",
       images: [
         "img/projects/99das/img1.png",
         "img/projects/99das/img2.gif",
@@ -364,6 +368,8 @@ document.addEventListener("DOMContentLoaded", function () {
       part: "UIUX DESIGN (70%)",
       client: "Client : 대구경북디자인진흥원",
       color: "#BAE14C",
+      mo_color: "#622BF7",
+      mo_bg: "#622BF7",
       images: [
         "img/projects/ridp/img1.png",
         "img/projects/ridp/img2.png",
@@ -522,6 +528,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.documentElement.style.setProperty(
       "--project-color",
       project.color
+    );
+    document.documentElement.style.setProperty(
+      "--project-mo-color",
+      project.mo_color
+    );
+    document.documentElement.style.setProperty(
+      "--project-mo-bg",
+      project.mo_bg
     );
 
     // 프로젝트 정보 업데이트
@@ -1324,6 +1338,3 @@ function checkProjectPassword(input) {
 function checkVaultPassword(input) {
   return md5(input) === PASSWORDS.VAULT;
 }
-
-
-
