@@ -103,10 +103,10 @@
     <nav id="gnb">
         <ul id="nav-1">
             <li class="slide1"></li>
-            <li class="slide2"></li>
-            <li class="menu_li_about2"><a href="#/">ABOUT</a></li>
+            <li class="slide2" style="opacity: 1; left: 181.344px; width: 75.5156px;"></li>
+            <li class="header menu_li_about2"><a href="#/">ABOUT</a></li>
             <li><a href="index.html">PROJECT</a></li>
-            <li><a href="vault.html">VAULT</a></li>
+            <li class="index_menu"><a href="vault.html">VAULT</a></li>
         </ul>
     </nav>
 
@@ -307,5 +307,16 @@
 
 </footer>
 
+<script>
+    setTimeout(() => {
+        var position = $(".index_menu").position();
+        var width = $(".index_menu").width();
+        $("#gnb  li.slide2").css({
+            opacity: 1,
+            left: +position.left,
+            width: width,
+        });
+    }, 10);
+</script>
 
 </html>

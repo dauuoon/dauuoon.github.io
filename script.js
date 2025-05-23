@@ -51,10 +51,9 @@ $(".header a").on("click", function (e) {
     // var position = $(".menu_li_about2").position();
     // var width = $(".menu_li_about2").width();
   } else {
-    var position = $(".index_menu").position();
-    var width = $(".index_menu").width();
-
     setTimeout(() => {
+      var position = $(".index_menu").position();
+      var width = $(".index_menu").width();
       $("#gnb  li.slide2").css({
         opacity: 1,
         left: +position.left,
