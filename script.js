@@ -73,7 +73,7 @@ if ($(".about_menu").hasClass("active")) {
   var width = $(".menu_li_about").width();
   $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
 }
-
+var currentPage;
 /* 어바웃 메뉴 시간 스크립트 */
 function updateClock() {
   const now = new Date();
@@ -996,7 +996,7 @@ function showPasswordPrompt(projectId) {
 // 현재 페이지에 따른 메뉴 활성화
 document.addEventListener("DOMContentLoaded", function () {
   // 현재 페이지 URL 가져오기
-  const currentPage = window.location.pathname.split("/").pop();
+  currentPage = window.location.pathname.split("/").pop();
 
   // 네비게이션 메뉴의 모든 링크
   const navLinks = document.querySelectorAll("#nav-1 li a");
