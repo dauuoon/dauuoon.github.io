@@ -340,8 +340,9 @@ document.addEventListener("DOMContentLoaded", function () {
       part: "UI · GUI DESIGN (100%)",
       client: "Client : Amazing E&M",
       color: "#F5BCBC",
-      mo_color: "#BAE14C",
-      mo_bg: "#212121",
+
+      mo_color: "#FFFFFF",
+      mo_bg: "#C9292C",
       images: [
         "img/projects/99das/img1.png",
         "img/projects/99das/img2.gif",
@@ -368,8 +369,9 @@ document.addEventListener("DOMContentLoaded", function () {
       part: "UIUX DESIGN (70%)",
       client: "Client : 대구경북디자인진흥원",
       color: "#BAE14C",
-      mo_color: "#FFFFFF",
-      mo_bg: "#C9292C",
+      mo_color: "#BAE14C",
+      mo_bg: "#212121",
+
       images: [
         "img/projects/ridp/img1.png",
         "img/projects/ridp/img2.png",
