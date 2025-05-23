@@ -42,11 +42,31 @@ $(".header a").on("click", function (e) {
   $(".menu_li_about a").toggleClass("active");
 
   if ($(".about_menu").hasClass("active")) {
-    var position = $(".menu_li_about").position();
-    var width = $(".menu_li_about").width();
-    $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
+    // $(".about_menu").remove("active");
+    var position = $(".menu_li_about2").position();
+    var width = $(".menu_li_about2").width();
+    $("#nav-1 .slide2").css({ opacity: 1, left: +position.left, width: width });
+
+    // 슬라이드 바 위치 조정
+    // var position = $(".menu_li_about2").position();
+    // var width = $(".menu_li_about2").width();
   } else {
-    $("#nav-1 .slide1").css({ opacity: 0 });
+    var position = $(".index_menu").position();
+    var width = $(".index_menu").width();
+
+    setTimeout(() => {
+      $("#gnb  li.slide2").css({
+        opacity: 1,
+        left: +position.left,
+        width: width,
+      });
+    }, 10);
+    // closex();
+    // $(".about_menu").add("active");
+    // $("#nav-1 .slide1").css({ opacity: 0 });
+    // var position2 = $(".index_menu").position().left;
+    // var width2 = $(".index_menu").width();
+    // $("#nav-1 .slide2").css({ opacity: 1, left: +position2, width: width2 });
   }
 });
 
@@ -678,29 +698,12 @@ document.addEventListener("DOMContentLoaded", function () {
     $(".menu_li_about a").click(function (e) {
       e.preventDefault();
       console.log("About clicked");
-      $(".about_menu").addClass("active");
+      $(".about_menu").toggleClass("active");
       $(this).addClass("active");
 
       // 슬라이드 바 위치 조정
       var position = $(this).parent().position();
       var width = $(this).parent().width();
-      $("#nav-1 .slide1").css({
-        opacity: 1,
-        left: position.left,
-        width: width,
-      });
-    });
-
-    // Dawoon Kim 클릭
-    $(".header a").click(function (e) {
-      e.preventDefault();
-      console.log("Dawoon Kim clicked");
-      $(".about_menu").addClass("active");
-      $(".menu_li_about a").addClass("active");
-
-      // 슬라이드 바 위치 조정
-      var position = $(".menu_li_about").position();
-      var width = $(".menu_li_about").width();
       $("#nav-1 .slide1").css({
         opacity: 1,
         left: position.left,
@@ -794,7 +797,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const slide2 = document.querySelector("#nav-1 .slide2");
 
     // ABOUT 링크와 닫기 버튼
-    var aboutLink = document.querySelector(".menu_li_about a");
+    var aboutLink = document.querySelector(".menu_li_about2 a");
     const closeButton = document.querySelector(".about_menu_icon");
 
     // !!! 여기에 765번째 줄 오류가 발생했던 코드 !!!
@@ -833,6 +836,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 닫기 버튼 클릭 시 ABOUT 활성화 상태 초기화
     if (closeButton) {
       // closeButton 요소가 존재하는지 확인
+
       closeButton.addEventListener("click", function () {
         if (aboutLink) {
           // aboutLink가 존재하는 경우에만 opacity 변경
@@ -855,6 +859,29 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       });
+
+      function closex() {
+        if (aboutLink) {
+          // aboutLink가 존재하는 경우에만 opacity 변경
+          aboutLink.style.opacity = "60%"; // ABOUT 링크 opacity 초기화
+        }
+
+        // 현재 페이지에 따라 원래 활성화된 메뉴 상태로 복원
+        navLinks.forEach((link) => {
+          if (
+            (currentPage === "" || currentPage === "index.html") &&
+            link.textContent === "PROJECT"
+          ) {
+            // WORK를 PROJECT로 변경
+            activateMenu(link);
+          } else if (
+            currentPage === "vault.html" &&
+            link.textContent === "VAULT"
+          ) {
+            activateMenu(link);
+          }
+        });
+      }
     } else {
       console.error("ABOUT 닫기 버튼 요소를 찾을 수 없습니다."); // 디버깅 로그
     }
@@ -866,9 +893,9 @@ document.addEventListener("DOMContentLoaded", function () {
         link.style.opacity = "1";
         const position = link.parentElement.offsetLeft;
         const width = link.parentElement.offsetWidth;
-        slide1.style.opacity = "1";
-        slide1.style.left = position + "px";
-        slide1.style.width = width + "px";
+        // slide1.style.opacity = "1";
+        // slide1.style.left = position + "px";
+        // slide1.style.width = width + "px";
         slide2.style.opacity = "1";
         slide2.style.left = position + "px";
         slide2.style.width = width + "px";
@@ -1032,7 +1059,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const slide2 = document.querySelector("#nav-1 .slide2");
 
   // ABOUT 링크와 닫기 버튼
-  var aboutLink = document.querySelector(".menu_li_about a");
+  var aboutLink = document.querySelector(".menu_li_about2 a");
   const closeButton = document.querySelector(".about_menu_icon");
 
   // ABOUT 클릭 시 다른 활성화 상태 초기화
@@ -1043,8 +1070,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // 슬라이드 바 위치 조정
     const position = this.parentElement.offsetLeft;
     const width = this.parentElement.offsetWidth;
-    slide1.style.left = position + "px";
-    slide1.style.width = width + "px";
+    // slide1.style.left = position + "px";
+    // slide1.style.width = width + "px";
     slide2.style.left = position + "px";
     slide2.style.width = width + "px";
   });
@@ -1052,12 +1079,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // 닫기 버튼 클릭 시 ABOUT 활성화 상태 초기화
   closeButton.addEventListener("click", function () {
     aboutLink.style.opacity = "60%"; // ABOUT 링크 opacity 초기화
-
     // 현재 페이지에 따라 원래 활성화된 메뉴 상태로 복원
     navLinks.forEach((link) => {
       if (
         (currentPage === "" || currentPage === "index.html") &&
-        link.textContent === "PROJECT"
+        link.textContent === "PROJECT-"
       ) {
         // WORK를 PROJECT로 변경
         activateMenu(link);
@@ -1072,9 +1098,9 @@ document.addEventListener("DOMContentLoaded", function () {
     link.style.opacity = "1";
     const position = link.parentElement.offsetLeft;
     const width = link.parentElement.offsetWidth;
-    slide1.style.opacity = "1";
-    slide1.style.left = position + "px";
-    slide1.style.width = width + "px";
+    // slide1.style.opacity = "1";
+    // slide1.style.left = position + "px";
+    // slide1.style.width = width + "px";
     slide2.style.opacity = "1";
     slide2.style.left = position + "px";
     slide2.style.width = width + "px";
