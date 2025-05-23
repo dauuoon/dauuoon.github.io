@@ -71,7 +71,7 @@ h2{
     -webkit-backdrop-filter: blur(10px);
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.10);
-    z-index: 999998;
+    z-index: 999993;
 }
 
 #nav-1 li {
@@ -248,7 +248,7 @@ h2{
   height: calc(100% - 35px);
   top: 0px;
   right: -440px;
-  z-index: 999997;
+  z-index: 999994;
   position: fixed;
   background: rgba(227, 193, 176);
   float: right;
@@ -346,7 +346,7 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999994;
+    z-index: 999998;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.5s, opacity 0.5s ease-in-out;
@@ -355,6 +355,7 @@ h2{
 #popup-container.active {
     visibility: visible;
     opacity: 1;
+    z-index: 999998;
 }
 
 /* 팝업 박스 */
@@ -645,14 +646,13 @@ h2{
 
 /* 모달 내용 */
 .project-modal .modal-content {
-    width: 95%; /* 화면 폭의 더 넓은 비율 사용 */
-    max-width: 800px; /* 모달의 최대 너비 */
+    width: 100%; /* 화면 폭의 더 넓은 비율 사용 */
+    max-width: 100%; /* 모달의 최대 너비 */
     min-width: 0;
     height: auto;
-    max-height: 95vh; /* 화면 높이의 95%를 넘지 않도록 (스크롤 가능하게) */
     overflow-y: auto; /* 내용이 많으면 세로 스크롤바 표시 */
     overflow-x: hidden; /* 가로 스크롤바 방지 및 내용 넘침 숨김 */
-    padding: 20px; /* 내용과 모달 테두리 사이 여백 */
+
 }
 
 /* 프로젝트 이미지 스타일 */
@@ -717,11 +717,16 @@ h2{
 .modal-content {
     scrollbar-width: thin;
     scrollbar-color: var(--project-color) transparent;
+    z-index: 999998;
 }
 
-/* 모달이 활성화될 때 네비게이션 숨기기 */
+/* 모달이 활성화될 때 네비게이션 숨기기 또는 뒤로 보내기 */
+/* Index 프로젝트 모달(`.project-modal`)이 열리고 body에 `modal-open` 클래스가 붙을 때 적용 */
 body.modal-open #nav-1 {
-  z-index: 1;
+    /* z-index 값을 매우 낮게 설정하여 모달 뒤로 완전히 가려지도록 함 */
+    z-index: -1; /* 음수 z-index 사용 */
+    /* 필요하다면 display: none; 또는 visibility: hidden; 으로 아예 숨길 수도 있습니다. */
+    /* display: none; */
 }
 
 /* 탑 버튼 스타일 */
@@ -739,7 +744,7 @@ body.modal-open #nav-1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 999990;
+    z-index: 999998;
     transition: opacity 0.3s, transform 0.3s;
     /* 처음에는 숨김 */
     opacity: 0;
@@ -844,11 +849,11 @@ body.modal-open #nav-1 {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 100);  /* 배경 어둡게 수정 */
+    background: rgba(0, 0, 0, 100);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999996;
+    z-index: 999998;
     opacity: 0;
     visibility: hidden;
     transition: visibility 0.5s, opacity 0.5s ease-in-out;
