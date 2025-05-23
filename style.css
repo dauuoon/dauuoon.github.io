@@ -1202,8 +1202,38 @@ img[src="img/lock.svg"] {
   .header {
     margin: 50px 40px;
   }
-}
 
+  .project_text {
+    /* right: unset;
+    left: 40px;
+    margin-top: 30px; */
+    position: relative;
+    right: unset;
+    left: 0;
+  }
+  .project_text .project_sub {
+    margin-left: 0;
+  }
+  .project {
+    box-sizing: border-box;
+  }
+  .project li {
+    box-sizing: border-box;
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    max-width: 100%;
+  }
+  .project_title {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 799px) {
+  .hide799 {
+    display: none;
+  }
+}
 /* 모바일 레이아웃 (767px 이하): 고정 1열 */
 @media screen and (max-width: 767px) {
   .study-grid-container {
