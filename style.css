@@ -1198,6 +1198,14 @@ img[src="img/lock.svg"] {
         width: 608px;
         height: 394px;
     }
+
+    .breadcrumb{
+        padding: 14px 40px;
+    }
+
+        .header{
+        margin: 50px 40px;
+    }
 }
 
 /* 모바일 레이아웃 (767px 이하): 고정 1열 */
