@@ -1233,6 +1233,7 @@ img[src="img/lock.svg"] {
   .about_menu {
     width: 50%;
     right: -60vw;
+    height: 100vh;
   }
 }
 @media screen and (max-width: 799px) {
