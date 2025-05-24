@@ -202,8 +202,14 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  const scaleFactor = 0.7;
-
+  var scaleFactor = 0.7;
+  if (window.innerWidth < 400) {
+    scaleFactor = (0.7 * 190) / 400;
+  } else if (window.innerWidth < 800) {
+    scaleFactor = (0.7 * 241) / 400;
+  } else if (window.innerWidth < 1024) {
+    scaleFactor = (0.7 * 340) / 400;
+  }
   // ✅ Matter.js 개체 생성
   const bodies = objects.map((obj) => {
     return Bodies.rectangle(
