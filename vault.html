@@ -309,15 +309,17 @@
 </footer>
 
 <script>
+
+
+    const positionx = 181.344;
+    const widthx = 75.5156;
     setTimeout(() => {
-        var position = $(".index_menu").position();
-        var width = $(".index_menu").width();
-        $("#gnb  li.slide2").css({
+        $("#gnb li.slide2").css({
             opacity: 1,
-            left: +position.left,
-            width: width,
+            left: +positionx,
+            width: widthx,
         });
-    }, 10);
+    }, 5);
 </script>
 
 </html>
