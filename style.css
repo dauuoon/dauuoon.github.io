@@ -10,6 +10,7 @@ body {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Edge */
   font-family: "Montserrat", "YourKoreanFont", sans-serif;
+  margin: 0;
 }
 
 /* a 태그 색상 지정 */
@@ -1224,6 +1225,7 @@ img[src="img/lock.svg"] {
     align-items: start;
     gap: 10px;
     max-width: 100%;
+    padding-left: 0;
   }
   .project_title {
     max-width: 100%;
@@ -1248,10 +1250,10 @@ img[src="img/lock.svg"] {
     margin-top: 20px;
   }
   .header {
-    margin-bottom: 10px;
+    margin: 30px 20px 10px 20px;
   }
   .project {
-    padding-left: 0;
+    padding-left: 20px;
   }
   .about_menu {
     width: 100%;
@@ -1272,6 +1274,10 @@ img[src="img/lock.svg"] {
   }
   .modal-header {
     background: var(--project-mo-bg);
+  }
+
+  .project_title_blur {
+    width: 100%;
   }
 }
 /* 모바일 레이아웃 (767px 이하): 고정 1열 */
