@@ -1172,8 +1172,9 @@ img[src="img/lock.svg"] {
     margin-top: 40px;
   }
 
+
   .project {
-    margin: 40px 0;
+    margin: 30px 0;
     box-sizing: border-box;
   }
   #clock2 {
@@ -1255,9 +1256,12 @@ img[src="img/lock.svg"] {
     height: 100vh;
   }
 }
+
 @media screen and (max-width: 799px) {
-
-
+  .project_number{
+    font-size: 14px;
+  }
+  
   #nav-1{
     bottom: 30px;
   }
@@ -1279,7 +1283,7 @@ img[src="img/lock.svg"] {
     margin-top: 20px;
   }
   .header {
-    margin: 30px 20px 10px 20px;
+    margin: 30px 20px 40px 20px;
   }
   .project {
     padding-left: 20px;
@@ -1369,7 +1373,7 @@ img[src="img/lock.svg"] {
   }
 
   .header {
-    margin: 30px 20px 0px 20px;
+    margin: 30px 20px 60px 20px;
   }
   .header a{
     font-size: 26px;
@@ -1392,7 +1396,7 @@ img[src="img/lock.svg"] {
     font-size: 14px;
     font-style: normal;
     font-weight: 300;
-    line-height: 27px; /* 192.857% */
+    line-height: 25px; /* 192.857% */
   }
 
   /* 메인 년도 */
