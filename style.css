@@ -1252,6 +1252,8 @@ img[src="img/lock.svg"] {
   }
 }
 @media screen and (max-width: 799px) {
+
+
   #nav-1{
     bottom: 30px;
   }
@@ -1267,7 +1269,7 @@ img[src="img/lock.svg"] {
   }
   h1,
   #clock2 {
-    font-size: 22px;
+    font-size: 26px;
   }
   h2 {
     margin-top: 20px;
@@ -1369,7 +1371,7 @@ img[src="img/lock.svg"] {
   h1 {
     color: #e3c1b0;
     font-family: "Montserrat", sans-serif;
-    font-size: 22px;
+    font-size: 26px;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
@@ -1391,7 +1393,7 @@ img[src="img/lock.svg"] {
   #clock2 {
     color: #e3c1b0;
     font-family: "Montserrat", sans-serif;
-    font-size: 22px;
+    font-size: 26px;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
