@@ -1230,6 +1230,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // 트랜지션이 끝난 후 요소 제거
         setTimeout(() => {
           popup.remove();
+          document.body.classList.remove("modal-open-study"); // 스크롤 활성화를 위해 클래스 제거
         }, 300); // 트랜지션 시간과 동일하게 설정
 
         document.removeEventListener("keydown", handleEsc);

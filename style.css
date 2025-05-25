@@ -1163,12 +1163,20 @@ img[src="img/lock.svg"] {
 
 /* 태블릿 레이아웃 (1023px 이하 768px 이상): 고정 2열 */
 @media screen and (max-width: 1023px) {
+ 
+
+
   .study-grid-container {
     /* 1fr 크기의 2개 열로 고정 */
     grid-template-columns: repeat(2, 1fr);
     gap: 40px; /* 태블릿 간격 */
     padding: 0 40px; /* 태블릿 여백 */
     margin-top: 40px;
+  }
+
+  .project {
+    margin: 40px 0;
+    box-sizing: border-box;
   }
 
   .horizontal-line1 {
@@ -1196,12 +1204,20 @@ img[src="img/lock.svg"] {
     height: 394px;
   }
 
+  .main_line {
+    height: 1px;
+    opacity: 0.1;
+    background: #fff;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
   .breadcrumb {
     padding: 14px 40px;
   }
 
   .header {
-    margin: 50px 40px;
+    margin: 50px 40px 0px 40px;
   }
 
   .project_text {
@@ -1215,9 +1231,8 @@ img[src="img/lock.svg"] {
   .project_text .project_sub {
     margin-left: 0;
   }
-  .project {
-    box-sizing: border-box;
-  }
+
+ 
   .project li {
     box-sizing: border-box;
     flex-direction: column;
@@ -1237,6 +1252,13 @@ img[src="img/lock.svg"] {
   }
 }
 @media screen and (max-width: 799px) {
+  #nav-1{
+    bottom: 30px;
+  }
+  .main_line{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
   .hide799 {
     display: none;
   }
@@ -1260,6 +1282,34 @@ img[src="img/lock.svg"] {
     width: 100%;
     right: -110vw;
   }
+  .about_menu_icon{
+    margin-right: 20px;
+    margin-top: -5px;
+  }
+  .about_title1{
+    margin-left: 20px;
+    margin-top: 30px;
+  }
+  .about_title{
+    margin-left: 30px;
+    margin-top: 25px;
+    font-size: 10px;
+  }
+  .about_group {
+    margin-left: 40px;
+}
+.about_project{
+  bottom: 20px;
+  height: 35px;
+  width: 324px;
+}
+#clock{
+  font-size: 12px;
+  bottom: 75px;
+}
+.about_project_detail a{
+  font-size: 16px;
+}
   /* project */
   .project-part,
   .project-date,
@@ -1292,7 +1342,7 @@ img[src="img/lock.svg"] {
   }
 
   .header {
-    margin: 30px 20px;
+    margin: 30px 20px 0px 20px;
   }
 
   h1 {
@@ -1397,6 +1447,8 @@ img[src="img/lock.svg"] {
 /* Vault 이미지 모달이 열렸을 때 body 스크롤 비활성화 */
 body.modal-open-study {
   overflow: hidden; /* 스크롤바 숨김 및 스크롤 방지 */
+  position: fixed; /* 스크롤 위치 고정 */
+  width: 100%; /* 전체 너비 유지 */
 }
 
 /* 혹시 Index 모달과 같은 클래스를 사용한다면 이 규칙으로 대체 가능 */
