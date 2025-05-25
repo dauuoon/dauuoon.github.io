@@ -1255,6 +1255,12 @@ img[src="img/lock.svg"] {
     right: -60vw;
     height: 100vh;
   }
+  .footer-right{
+    margin-left: 40px;
+  }
+  .footer-left{
+    margin-right: 30px;
+  }
 }
 
 @media screen and (max-width: 799px) {
@@ -1283,7 +1289,7 @@ img[src="img/lock.svg"] {
     margin-top: 20px;
   }
   .header {
-    margin: 30px 20px 40px 20px;
+    margin: 40px 20px 40px 20px;
   }
   .project {
     padding-left: 20px;
@@ -1345,6 +1351,12 @@ img[src="img/lock.svg"] {
 
   .project_title_blur {
     width: 100%;
+  }
+  .footer-right{
+    margin-left: 20px;
+  }
+  .footer-left{
+    margin-right: 10px;
   }
 }
 /* 모바일 레이아웃 (767px 이하): 고정 1열 */
