@@ -1307,6 +1307,12 @@ img[src="img/lock.svg"] {
   font-size: 12px;
   bottom: 75px;
 }
+#clock3{
+  font-size: 22px;
+}
+.about_title2{
+  font-size: 22px;
+}
 .about_project_detail a{
   font-size: 16px;
 }
@@ -1333,6 +1339,21 @@ img[src="img/lock.svg"] {
 }
 /* 모바일 레이아웃 (767px 이하): 고정 1열 */
 @media screen and (max-width: 767px) {
+
+  .project-title{
+    font-size: 28px;
+  }
+  .project-subtitle {
+    font-size: 20px;
+  }
+  .modal-close {
+    top: 30px;
+    right: 20px;
+  }
+
+  .project_title{
+    font-size: 18px;
+  }
   .study-grid-container {
     /* 1fr 크기의 1개 열로 고정 */
     grid-template-columns: repeat(1, 1fr);
@@ -1375,6 +1396,12 @@ img[src="img/lock.svg"] {
     font-weight: 300;
     font-style: normal;
     line-height: 35px; /* 89.286% */
+  }
+  #clock3{
+    font-size: 22px;
+  }
+  .about_title2{
+    font-size: 22px;
   }
 
   .horizontal-line1 {
@@ -1438,6 +1465,7 @@ img[src="img/lock.svg"] {
 
   .modal-header {
     position: relative;
+    padding: 10px 20px 20px 20px;
   }
   .header-content {
     flex-direction: column;
