@@ -15,27 +15,29 @@ body {
 
 /* a 태그 색상 지정 */
 a {
-  color: #e3c1b0;
+  color: #000000;
 }
 a:visited {
-  color: #e3c1b0;
+  color: #000000;
 }
 a:hover {
   opacity: 80%;
 }
 a:active {
-  color: #e3c1b0;
+  color: #000000;
 }
 
-/* 상단 GNB */
-.header {
-  margin: 50px;
-}
-
+/* 헤더 내 링크 색상 */
 .header a {
+  color: #e3c1b0;
   font-weight: 900;
   text-decoration-line: underline;
   cursor: pointer;
+}
+
+/* 헤더 여백 */
+.header {
+  margin: 50px;
 }
 
 h1 {
@@ -266,6 +268,8 @@ h2 {
   -ms-transition: right 1s;
   -o-transition: right 1s;
   transition: right 1s;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .about_menu.active {
@@ -318,6 +322,8 @@ h2 {
   font-weight: 300;
   font-family: Montserrat;
   margin-top: -8px;
+  color: #000000;
+  line-height: 1.6;
 }
 
 /* 어바웃 시간초 */
@@ -325,10 +331,10 @@ h2 {
   font-size: 14px;
   font-weight: 300;
   font-family: Montserrat;
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* 메인 년도 */
@@ -453,10 +459,9 @@ h2 {
   height: 40px;
   background-color: #d7b7a7;
   border-radius: 80px;
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about_project_detail a {
@@ -467,7 +472,7 @@ h2 {
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  bottom: -2px;
+  top: 50%;
 }
 
 /* 하단 푸터 고정 박스 */

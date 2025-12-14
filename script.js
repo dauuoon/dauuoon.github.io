@@ -1,3 +1,20 @@
+/* ABOUT 콘텐츠 동적 로드 */
+$(document).ready(function() {
+  $('#about-menu-container').load('about-content.html', function(response, status, xhr) {
+    if (status === 'error') {
+      console.error('Error loading about content: ' + xhr.status + ' ' + xhr.statusText);
+    } else {
+      // 콘텐츠 로드 후 스크립트 초기화
+      initializeAboutMenu();
+    }
+  });
+});
+
+function initializeAboutMenu() {
+  // ABOUT 메뉴 이벤트 리스너 재초기화
+  // (기존의 ABOUT 관련 이벤트 리스너 코드가 여기서 실행됨)
+}
+
 /* 메뉴 스크립트 */
 console.log("hi");
 $("#nav-1 a").on("click", function () {
@@ -26,10 +43,12 @@ $(".menu_li_about").on("click", function (e) {
   $(this).find("a").toggleClass("active");
 
   if ($(".about_menu").hasClass("active")) {
+    document.body.style.overflow = "hidden";
     var position = $(this).position();
     var width = $(this).width();
     $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
   } else {
+    document.body.style.overflow = "auto";
     $("#nav-1 .slide1").css({ opacity: 0 });
   }
 });
@@ -42,6 +61,7 @@ $(".header a").on("click", function (e) {
   $(".menu_li_about a").toggleClass("active");
 
   if ($(".about_menu").hasClass("active")) {
+    document.body.style.overflow = "hidden";
     // $(".about_menu").remove("active");
     var position = $(".menu_li_about2").position();
     var width = $(".menu_li_about2").width();
@@ -51,6 +71,7 @@ $(".header a").on("click", function (e) {
     // var position = $(".menu_li_about2").position();
     // var width = $(".menu_li_about2").width();
   } else {
+    document.body.style.overflow = "auto";
     setTimeout(() => {
       var position = $(".index_menu").position();
       var width = $(".index_menu").width();
@@ -74,6 +95,7 @@ $(".about_menu_icon").on("click", function () {
   console.log("Close button clicked"); // 디버깅용
   $(".about_menu").removeClass("active");
   $(".menu_li_about a").removeClass("active");
+  document.body.style.overflow = "auto";
   $("#nav-1 .slide1").css({ opacity: 0 });
 });
 
@@ -82,6 +104,7 @@ $(document).on("keydown", function (e) {
   if (e.key === "Escape" && $(".about_menu").hasClass("active")) {
     $(".about_menu").removeClass("active");
     $(".menu_li_about a").removeClass("active");
+    document.body.style.overflow = "auto";
     $("#nav-1 .slide1").css({ opacity: 0 });
   }
 });
@@ -106,7 +129,10 @@ function updateClock() {
   const dateString = `${year}.${month}.${day}`;
   const timeString = `${hours}:${minutes}:${seconds}`;
   const fullString = `${dateString} ${timeString}`;
-  document.getElementById("clock").textContent = fullString;
+  const clockElement = document.getElementById("clock");
+  if (clockElement) {
+    clockElement.textContent = fullString;
+  }
 }
 // 매 초마다 시계 업데이트
 setInterval(updateClock, 1000);
@@ -120,7 +146,10 @@ function updateClock2() {
 
   const dateString = `© ${year}`;
   const fullString = `${dateString}`;
-  document.getElementById("clock2").textContent = fullString;
+  const clock2Element = document.getElementById("clock2");
+  if (clock2Element) {
+    clock2Element.textContent = fullString;
+  }
 }
 // 매 초마다 시계 업데이트
 setInterval(updateClock2, 1000);
@@ -134,7 +163,10 @@ function updateClock3() {
 
   const dateString = `© ${year}`;
   const fullString = `${dateString}`;
-  document.getElementById("clock3").textContent = fullString;
+  const clock3Element = document.getElementById("clock3");
+  if (clock3Element) {
+    clock3Element.textContent = fullString;
+  }
 }
 // 매 초마다 시계 업데이트
 setInterval(updateClock3, 1000);
@@ -722,6 +754,12 @@ document.addEventListener("DOMContentLoaded", function () {
       $(".about_menu").toggleClass("active");
       $(this).addClass("active");
 
+      if ($(".about_menu").hasClass("active")) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+
       // 슬라이드 바 위치 조정
       var position = $(this).parent().position();
       var width = $(this).parent().width();
@@ -737,6 +775,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Close clicked");
       $(".about_menu").removeClass("active");
       $(".menu_li_about a").removeClass("active");
+      document.body.style.overflow = "auto";
       $("#nav-1 .slide1").css({ opacity: 0 });
     });
 
@@ -745,6 +784,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.key === "Escape" && $(".about_menu").hasClass("active")) {
         $(".about_menu").removeClass("active");
         $(".menu_li_about a").removeClass("active");
+        document.body.style.overflow = "auto";
         $("#nav-1 .slide1").css({ opacity: 0 });
       }
     });
@@ -1084,35 +1124,39 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeButton = document.querySelector(".about_menu_icon");
 
   // ABOUT 클릭 시 다른 활성화 상태 초기화
-  aboutLink.addEventListener("click", function () {
-    navLinks.forEach((link) => {
-      link.style.opacity = "60%"; // 모든 링크 opacity 초기화
+  if (aboutLink) {
+    aboutLink.addEventListener("click", function () {
+      navLinks.forEach((link) => {
+        link.style.opacity = "60%"; // 모든 링크 opacity 초기화
+      });
+      // 슬라이드 바 위치 조정
+      const position = this.parentElement.offsetLeft;
+      const width = this.parentElement.offsetWidth;
+      // slide1.style.left = position + "px";
+      // slide1.style.width = width + "px";
+      slide2.style.left = position + "px";
+      slide2.style.width = width + "px";
     });
-    // 슬라이드 바 위치 조정
-    const position = this.parentElement.offsetLeft;
-    const width = this.parentElement.offsetWidth;
-    // slide1.style.left = position + "px";
-    // slide1.style.width = width + "px";
-    slide2.style.left = position + "px";
-    slide2.style.width = width + "px";
-  });
+  }
 
   // 닫기 버튼 클릭 시 ABOUT 활성화 상태 초기화
-  closeButton.addEventListener("click", function () {
-    aboutLink.style.opacity = "60%"; // ABOUT 링크 opacity 초기화
-    // 현재 페이지에 따라 원래 활성화된 메뉴 상태로 복원
-    navLinks.forEach((link) => {
-      if (
-        (currentPage === "" || currentPage === "index.html") &&
-        link.textContent === "PROJECT-"
-      ) {
-        // WORK를 PROJECT로 변경
-        activateMenu(link);
-      } else if (currentPage === "vault.html" && link.textContent === "VAULT") {
-        activateMenu(link);
-      }
+  if (closeButton) {
+    closeButton.addEventListener("click", function () {
+      aboutLink.style.opacity = "60%"; // ABOUT 링크 opacity 초기화
+      // 현재 페이지에 따라 원래 활성화된 메뉴 상태로 복원
+      navLinks.forEach((link) => {
+        if (
+          (currentPage === "" || currentPage === "index.html") &&
+          link.textContent === "PROJECT-"
+        ) {
+          // WORK를 PROJECT로 변경
+          activateMenu(link);
+        } else if (currentPage === "vault.html" && link.textContent === "VAULT") {
+          activateMenu(link);
+        }
+      });
     });
-  });
+  }
 
   // 메뉴 활성화 함수
   function activateMenu(link) {
@@ -1142,49 +1186,88 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Vault 페이지 비밀번호 체크
   if (currentPage === "vault.html") {
-    const vaultContent = document.getElementById("vault-content");
+    const vaultContent = document.querySelector(".vault-content");
     const popup = document.getElementById("vault-popup-container");
     const passwordInput = document.getElementById("vault-password-input");
+    const submitButton = document.getElementById("vault-submit-password");
+    const nav = document.querySelector("#nav-1");
+    const footer = document.querySelector(".footer");
 
-    // 페이지 로드 시 팝업 표시
-    popup.classList.remove("hidden");
-    popup.classList.add("active");
-    passwordInput.focus();
-
-    // ESC 키로 팝업 닫기 (페이지 이동)
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
-        window.location.href = "index.html";
-        window.location.href = "vault.html";
-      }
-    });
-
-    // 팝업 배경 클릭 시 페이지 이동
-    popup.addEventListener("click", function (e) {
-      if (e.target === popup) {
-        window.location.href = "index.html";
-        window.location.href = "vault.html";
-      }
-    });
+    // null 체크
+    if (!popup || !passwordInput || !submitButton) {
+      console.error("Vault 요소를 찾을 수 없습니다!", {popup, passwordInput, submitButton});
+      return;
+    }
 
     // 비밀번호 확인
     function checkVaultPassword() {
       const password = passwordInput.value;
-      if (checkProjectPassword(password)) {
-        // 프로젝트와 동일한 비밀번호 사용
+      if (!password) {
+        alert("비밀번호를 입력해주세요!");
+        return;
+      }
+
+      const hashedInput = CryptoJS.MD5(password).toString();
+      console.log("입력된 비밀번호 해시:", hashedInput);
+      console.log("저장된 VAULT 해시:", PASSWORDS.VAULT);
+
+      if (hashedInput === PASSWORDS.VAULT) {
+        // 비밀번호가 일치하면
+        console.log("✅ 비밀번호 일치!");
         popup.classList.remove("active");
         popup.classList.add("hidden");
-        vaultContent.style.display = "block";
+        if (vaultContent) vaultContent.style.display = "block";
+        document.body.style.overflow = "auto";
+        if (nav) nav.style.display = "flex";
+        if (footer) footer.style.display = "block";
+        sessionStorage.setItem("vaultAuthorized", "true");
+        document.documentElement.style.display = "block";
       } else {
-        alert("❌ 비밀번호가 일치하지 않습니다. 다시 시도해주세요!");
+        console.log("❌ 비밀번호 불일치!");
+        alert("비밀번호가 일치하지 않습니다. 다시 시도해주세요!");
         passwordInput.value = "";
         passwordInput.focus();
       }
     }
 
+    // 페이지 로드 시 팝업 표시 여부 결정
+    const isAuthorized = sessionStorage.getItem("vaultAuthorized");
+    console.log("이미 인증됨?", isAuthorized);
+
+    if (!isAuthorized) {
+      popup.classList.remove("hidden");
+      popup.classList.add("active");
+      document.body.style.overflow = "hidden";
+      if (nav) nav.style.display = "none";
+      if (footer) footer.style.display = "none";
+      if (vaultContent) vaultContent.style.display = "none";
+      passwordInput.focus();
+    } else {
+      // 이미 인증된 경우
+      popup.classList.add("hidden");
+      if (vaultContent) vaultContent.style.display = "block";
+      document.body.style.overflow = "auto";
+      if (nav) nav.style.display = "flex";
+      if (footer) footer.style.display = "block";
+      document.documentElement.style.display = "block";
+    }
+
+    // ESC 키로 메인 페이지로 이동
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        window.location.href = "index.html";
+      }
+    });
+
+    // 팝업 배경 클릭 시 메인 페이지로 이동
+    popup.addEventListener("click", function (e) {
+      if (e.target === popup) {
+        window.location.href = "index.html";
+      }
+    });
+
     // 확인 버튼 클릭 이벤트
-    document.getElementById("vault-submit-password").onclick =
-      checkVaultPassword;
+    submitButton.onclick = checkVaultPassword;
 
     // Enter 키 이벤트
     passwordInput.addEventListener("keypress", function (e) {
@@ -1342,8 +1425,4 @@ function checkProjectPassword(input) {
   console.log("Entered hash:", hashedInput); // 디버깅용
   console.log("Stored hash:", PASSWORDS.PROJECT); // 디버깅용
   return hashedInput === PASSWORDS.PROJECT;
-}
-
-function checkVaultPassword(input) {
-  return md5(input) === PASSWORDS.VAULT;
 }
