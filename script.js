@@ -11,8 +11,14 @@ $(document).ready(function() {
 });
 
 function initializeAboutMenu() {
-  // ABOUT 메뉴 이벤트 리스너 재초기화
-  // (기존의 ABOUT 관련 이벤트 리스너 코드가 여기서 실행됨)
+  // ABOUT 메뉴 X 버튼 클릭 이벤트
+  $(".about_menu_icon").on("click", function () {
+    console.log("About close button clicked");
+    $(".about_menu").removeClass("active");
+    $(".menu_li_about a").removeClass("active");
+    document.body.style.overflow = "auto";
+    $("#nav-1 .slide1").css({ opacity: 0 });
+  });
 }
 
 /* 메뉴 스크립트 */
